@@ -2013,6 +2013,13 @@ function loadEnemy(){
   const ctx=$('enemyCanvas').getContext('2d');
   $('enemyCanvas').width=150;$('enemyCanvas').height=192;
   drawPx(ctx,e.frames[0]);
+  // Reset any leftover death/hit/lunge animation state from a previous battle
+  const eOuter=$('enemyOuter');
+  if(eOuter){
+    eOuter.classList.remove('anim-enemy-dead','anim-enemy-hit','anim-enemy-lunge','anim-enemy-attack');
+    void eOuter.offsetWidth;
+    eOuter.classList.add('anim-enemy-idle');
+  }
   updateBars();$('lvD').textContent=G.level;
 }
 
