@@ -117,6 +117,10 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   margin-bottom:8px;
   position:relative;
 }
+.h-preview canvas{
+  width:auto;height:100%;max-width:100%;
+  image-rendering:pixelated;
+}
 .sprite-container{
   image-rendering:pixelated;
   transform:scale(1);
@@ -159,7 +163,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 
 /* SKY */
 .sky-zone{
-  flex:0 0 56%;position:relative;overflow:hidden;
+  flex:0 0 46%;position:relative;overflow:hidden;
 }
 .sky-ninja{background:linear-gradient(180deg,#87CEEB 0%,#B8E4FF 50%,#D4EEDD 100%)}
 .sky-saiyan{background:linear-gradient(180deg,#FFE082 0%,#FFCA28 30%,#FF8F00 60%,#E65100 100%)}
@@ -301,7 +305,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 ═══════════════════════════════ */
 .hero-wrap{
   position:absolute;
-  bottom:8%;left:50%;transform:translateX(-50%);
+  bottom:16%;left:50%;transform:translateX(-50%);
   z-index:20;text-align:center;
 }
 .hero-sprite-outer{
@@ -454,7 +458,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 
 /* Hero shadow */
 .fighter-shadow{
-  width:90px;height:14px;
+  width:120px;height:18px;
   background:rgba(0,0,0,.35);
   border-radius:50%;margin:4px auto 0;
   filter:blur(5px);
@@ -861,7 +865,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   position:absolute;
   bottom:0;left:50%;transform:translateX(-50%);
   pointer-events:none;z-index:18;
-  width:120px;height:160px;
+  width:160px;height:213px;
   display:flex;align-items:center;justify-content:center;
 }
 /* Orbiting ring */
@@ -1221,21 +1225,21 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   <div class="hero-row">
     <div class="hcard" data-h="ninja" onclick="pickHero(this)">
       <div class="h-preview">
-        <canvas id="prev-ninja" width="96" height="144"></canvas>
+        <canvas id="prev-ninja" width="128" height="192"></canvas>
       </div>
       <div class="h-name">NINJA</div>
       <div class="h-sub">Vortex Blast<br>Shuriken<br>Sword Dash</div>
     </div>
     <div class="hcard" data-h="saiyan" onclick="pickHero(this)">
       <div class="h-preview">
-        <canvas id="prev-saiyan" width="96" height="144"></canvas>
+        <canvas id="prev-saiyan" width="128" height="192"></canvas>
       </div>
       <div class="h-name">COSMIC HERO</div>
       <div class="h-sub">Cosmic Wave<br>Star Bolt<br>Galaxy Orb</div>
     </div>
     <div class="hcard" data-h="spider" onclick="pickHero(this)">
       <div class="h-preview">
-        <canvas id="prev-spider" width="96" height="144"></canvas>
+        <canvas id="prev-spider" width="128" height="192"></canvas>
       </div>
       <div class="h-name">WEB RANGER</div>
       <div class="h-sub">Web Shot<br>Ranger Kick<br>Web Slam</div>
@@ -1274,7 +1278,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
       <!-- Enemy -->
       <div class="enemy-wrap" id="enemyWrap">
         <div class="enemy-sprite-outer anim-enemy-idle" id="enemyOuter">
-          <canvas id="enemyCanvas" width="112" height="144" style="image-rendering:pixelated;display:block"></canvas>
+          <canvas id="enemyCanvas" width="150" height="192" style="image-rendering:pixelated;display:block"></canvas>
         </div>
         <div class="fighter-shadow"></div>
       </div>
@@ -1287,7 +1291,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
       <!-- Hero -->
       <div class="hero-wrap" id="heroWrap">
         <div class="hero-sprite-outer anim-idle" id="heroOuter">
-          <canvas id="heroCanvas" width="96" height="144" style="image-rendering:pixelated;display:block"></canvas>
+          <canvas id="heroCanvas" width="128" height="192" style="image-rendering:pixelated;display:block"></canvas>
         </div>
         <div class="fighter-shadow"></div>
       </div>
@@ -1362,7 +1366,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
    drawPixels(ctx, scale, pixels)
    pixels = [[x,y,color], ...]
 ═══════════════════════════════════════════ */
-const S=6; // pixel scale — 2x bigger sprites
+const S=8; // pixel scale — bigger sprites
 
 function drawPx(ctx,pixels){
   ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
@@ -1821,7 +1825,7 @@ function animTick(){
     const frames=h.frames[heroAnimState]||h.frames.idle;
     heroFrame=(heroFrame+1)%frames.length;
     const ctx=document.getElementById('heroCanvas').getContext('2d');
-    ctx.canvas.width=96;ctx.canvas.height=144;
+    ctx.canvas.width=128;ctx.canvas.height=192;
     drawPx(ctx,frames[heroFrame]);
   }
   if(enemyFrameTimer>FRAME_RATE/1.5){
@@ -1830,16 +1834,25 @@ function animTick(){
     const frames=eData.frames;
     enemyFrame=(enemyFrame+1)%frames.length;
     const ctx=document.getElementById('enemyCanvas').getContext('2d');
-    ctx.canvas.width=112;ctx.canvas.height=144;
+    ctx.canvas.width=150;ctx.canvas.height=192;
     drawPx(ctx,frames[enemyFrame]);
   }
   requestAnimationFrame(animTick);
 }
 
+const HERO_ANIM_CLASSES=['anim-idle','anim-charge','anim-attack','anim-hurt','anim-victory'];
+function applyHeroAnimClass(state){
+  const el=$('heroOuter');
+  if(!el)return;
+  el.classList.remove(...HERO_ANIM_CLASSES);
+  void el.offsetWidth; // restart animation even if same state fires twice
+  el.classList.add('anim-'+state);
+}
 function setHeroAnim(state,duration){
   heroAnimState=state;heroFrame=0;heroFrameTimer=0;
+  applyHeroAnimClass(state);
   if(duration){
-    setTimeout(()=>{heroAnimState='idle';heroFrame=0},duration);
+    setTimeout(()=>{heroAnimState='idle';heroFrame=0;applyHeroAnimClass('idle');},duration);
   }
 }
 function setEnemyAnim(state,duration){
@@ -1964,7 +1977,7 @@ function drawPreview(hk){
   const h=HEROES[hk];
   const frames=h.frames.idle;
   const canvas=$(`prev-${hk}`);
-  canvas.width=96;canvas.height=144;
+  canvas.width=128;canvas.height=192;
   const ctx=canvas.getContext('2d');
   ctx.imageSmoothingEnabled=false;
   drawPx(ctx,frames[0]);
@@ -1998,7 +2011,7 @@ function loadEnemy(){
   G.enemyHp=baseHp;G.enemyMaxHp=baseHp;
   $('eName').textContent=e.name;
   const ctx=$('enemyCanvas').getContext('2d');
-  $('enemyCanvas').width=112;$('enemyCanvas').height=144;
+  $('enemyCanvas').width=150;$('enemyCanvas').height=192;
   drawPx(ctx,e.frames[0]);
   updateBars();$('lvD').textContent=G.level;
 }
@@ -2007,7 +2020,7 @@ function applyHeroCanvas(){
   const h=HEROES[G.heroKey];
   $('hName').textContent=h.name;
   const ctx=$('heroCanvas').getContext('2d');
-  $('heroCanvas').width=96;$('heroCanvas').height=144;
+  $('heroCanvas').width=128;$('heroCanvas').height=192;
   drawPx(ctx,h.frames.idle[0]);
   updateBars();
 }
@@ -2171,13 +2184,14 @@ function fireJutsu(idx){
         spawnFlash('#ffffff77');
         setEnemyAnim('hurt',700);
         shakeEnemy();
+        flashEnemyHit(700);
         G.enemyHp=Math.max(0,G.enemyHp-j.dmg);
         updateBars();
         spawnDmg(j.dmg,ex,ey,j.color);
         G.score+=j.dmg*5*G.level;$('scoreD').textContent=G.score;
         setTimeout(()=>{
           if(G.enemyHp<=0){
-            setEnemyAnim('dead');
+            setEnemyAnim('dead');playEnemyDead();
             setHeroAnim('victory');
             setTimeout(endWin,800);
           } else {
@@ -2194,13 +2208,14 @@ function fireJutsu(idx){
           spawnFlash('#ffffff66');
           setEnemyAnim('hurt',600);
           shakeEnemy();
+          flashEnemyHit(600);
           G.enemyHp=Math.max(0,G.enemyHp-j.dmg);
           updateBars();
           spawnDmg(j.dmg,ex,ey,j.color);
           G.score+=j.dmg*5*G.level;$('scoreD').textContent=G.score;
           setTimeout(()=>{
             if(G.enemyHp<=0){
-              setEnemyAnim('dead');
+              setEnemyAnim('dead');playEnemyDead();
               setHeroAnim('victory');
               setTimeout(endWin,800);
             } else {
@@ -2260,6 +2275,13 @@ function spawnEnemyCounter(cb){
   const tx=hR.left+hR.width*.5, ty=hR.top+hR.height*.35;
   const e=getEnemy();
   setEnemyAnim('attack',500);
+  const eOuter=$('enemyOuter');
+  if(eOuter){
+    eOuter.classList.remove('anim-enemy-idle');
+    void eOuter.offsetWidth;
+    eOuter.classList.add('anim-enemy-lunge');
+    setTimeout(()=>{eOuter.classList.remove('anim-enemy-lunge');eOuter.classList.add('anim-enemy-idle');},450);
+  }
 
   setTimeout(()=>{
     // Medium projectile
@@ -2735,6 +2757,26 @@ function shakeEnemy() {
   setTimeout(()=>outer.classList.remove('enemy-shake'), 600);
 }
 
+function playEnemyDead(){
+  const el = document.getElementById('enemyOuter');
+  if(!el) return;
+  el.classList.remove('anim-enemy-idle','anim-enemy-hit','anim-enemy-lunge');
+  void el.offsetWidth;
+  el.classList.add('anim-enemy-dead');
+}
+
+function flashEnemyHit(duration){
+  const el = document.getElementById('enemyOuter');
+  if(!el) return;
+  el.classList.remove('anim-enemy-idle','anim-enemy-hit');
+  void el.offsetWidth; // reflow to restart
+  el.classList.add('anim-enemy-hit');
+  setTimeout(()=>{
+    el.classList.remove('anim-enemy-hit');
+    if(!el.classList.contains('anim-enemy-lunge')) el.classList.add('anim-enemy-idle');
+  }, duration||550);
+}
+
 
 /* ════════════════════════════════════════════
    JOURNEY MAP SYSTEM
@@ -2950,8 +2992,8 @@ function fireSwordAttack(jutsu, onComplete){
   ].join(';');
   // Place hero canvas clone
   const cloneCanvas=document.createElement('canvas');
-  cloneCanvas.width=96; cloneCanvas.height=144;
-  cloneCanvas.style.cssText='image-rendering:pixelated;width:96px;height:144px;';
+  cloneCanvas.width=128; cloneCanvas.height=192;
+  cloneCanvas.style.cssText='image-rendering:pixelated;width:128px;height:192px;';
   const clCtx=cloneCanvas.getContext('2d');
   clCtx.drawImage(heroText,0,0);
   dashEl.appendChild(cloneCanvas);
