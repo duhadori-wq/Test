@@ -244,6 +244,18 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   text-shadow:1px 1px 0 #8B7200;
   box-shadow:0 2px 6px rgba(139,114,0,.55);
 }
+.coin-box{
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(11px,2vw,14px);
+  color:#FFC93C;margin-top:3px;
+  background:rgba(0,0,20,.75);border:1px solid #FFC93C;
+  border-radius:10px;padding:1px 8px;
+}
+.map-coins-line{
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(12px,3vw,16px);
+  color:#FFC93C;margin-bottom:8px;
+}
 .lv-box{
   font-family:'Baloo 2','Nunito',sans-serif;
   font-size:11px;color:#aaa;
@@ -737,6 +749,16 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   font-size:clamp(22px,7vw,46px);
   color:#fff;line-height:1.2;margin-bottom:8px;
   text-shadow:3px 3px 0 #333;
+}
+.q-math.q-visual{
+  font-size:clamp(17px,4.6vw,26px);
+  line-height:1.55;white-space:normal;
+  word-break:break-all;padding:0 8px;
+}
+.q-math .q-plus{
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-weight:800;font-size:clamp(20px,5.5vw,32px);
+  color:#FFD600;white-space:nowrap;
 }
 .q-math.glow{animation:mathGlowPx .5s ease-out infinite alternate}
 @keyframes mathGlowPx{from{text-shadow:3px 3px 0 #333}to{text-shadow:3px 3px 0 #8B7200,0 0 20px #FFD600,0 0 40px rgba(255,214,0,.5)}}
@@ -1243,6 +1265,13 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 .ch-slot{display:block}
 .ch-slot-hero{width:136px;height:170px}
 .ch-slot-enemy{width:165px;height:177px}
+.boss-mode .ch-slot-enemy{width:205px;height:220px}
+.boss-mode .ch{filter:drop-shadow(0 5px 5px rgba(0,0,0,.22)) drop-shadow(0 0 18px rgba(255,82,82,.45))}
+.e-shield{
+  font-size:clamp(12px,3.2vw,16px);
+  margin-top:3px;letter-spacing:2px;
+  filter:drop-shadow(0 0 6px #4D9FFF);
+}
 .ch-slot svg,.prev-slot svg{width:100%;height:100%;display:block;overflow:visible}
 .prev-slot{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .ch{overflow:visible;filter:drop-shadow(0 5px 5px rgba(0,0,0,.22))}
@@ -1380,6 +1409,76 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 }
 .sig-saiyan .ch-cape{animation:capeStorm .4s ease-in-out infinite}
 @keyframes capeStorm{0%,100%{transform:skewX(-3deg) scaleY(1.02)}50%{transform:skewX(-11deg) scaleY(1.07)}}
+
+/* ═══════════════════════════════
+   COSTUME SHOP
+═══════════════════════════════ */
+#s-shop{background:radial-gradient(ellipse at 50% 25%,#241a4e 0%,#0a0620 75%)}
+.shop-wrap{
+  width:100%;height:100%;max-width:520px;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;
+  padding:20px 14px 12px;overflow:hidden;
+}
+.shop-title{
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(20px,6vw,30px);font-weight:800;
+  color:#FFD600;letter-spacing:1px;
+  text-shadow:0 0 16px rgba(255,214,0,.5),0 3px 0 rgba(0,0,0,.4);
+}
+.shop-coins{
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(15px,4vw,20px);color:#FFC93C;
+  margin:4px 0 12px;
+}
+.shop-tabs{display:flex;gap:8px;margin-bottom:14px}
+.shop-tab{
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(11px,3vw,14px);font-weight:700;
+  padding:7px 16px;border-radius:999px;cursor:pointer;
+  border:2px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.06);color:#bbb;
+  transition:all .15s;
+}
+.shop-tab.active{border-color:#FFD600;color:#FFD600;background:rgba(255,214,0,.12)}
+.shop-grid{
+  flex:1;width:100%;overflow-y:auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  align-content:start;padding:2px;
+}
+.shop-card{
+  border:3px solid rgba(255,255,255,.15);border-radius:18px;
+  background:rgba(255,255,255,.05);
+  padding:10px 6px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.shop-card.worn{border-color:#00E676;box-shadow:0 0 14px rgba(0,230,118,.35)}
+.shop-prev{width:74px;height:92px}
+.shop-prev svg{width:100%;height:100%;overflow:visible}
+.shop-name{
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(11px,2.8vw,13px);font-weight:800;color:#fff;
+}
+.shop-btn{
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(11px,2.8vw,13px);font-weight:800;
+  padding:6px 14px;border-radius:999px;border:none;cursor:pointer;
+  box-shadow:0 3px 0 rgba(0,0,0,.3);
+}
+.shop-btn.buy{background:linear-gradient(160deg,#FFC93C,#F0930B);color:#4a3000}
+.shop-btn.buy:disabled{filter:grayscale(.8) brightness(.7);cursor:not-allowed}
+.shop-btn.wear{background:linear-gradient(160deg,#4D9FFF,#1565C0);color:#fff}
+.shop-btn.wornb{background:linear-gradient(160deg,#5FD068,#2E8B3A);color:#fff;cursor:default}
+.shop-open-btn{
+  margin-top:12px;
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(13px,3.4vw,16px);font-weight:800;
+  padding:10px 26px;border-radius:999px;cursor:pointer;
+  border:2px solid #FFC93C;background:rgba(255,201,60,.1);color:#FFC93C;
+  transition:transform .15s;
+}
+.shop-open-btn:hover{transform:translateY(-2px)}
+.map-btn-row{display:flex;gap:10px;margin-top:6px;flex-shrink:0}
+.map-btn-row .map-back-btn{margin-top:0}
 </style>
 </head>
 <body>
@@ -1416,6 +1515,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
     </div>
   </div>
   <button class="go-btn" id="goBtn" onclick="startBattle()" disabled>► START BATTLE!</button>
+  <button class="shop-open-btn" onclick="openShop()">🛍 COSTUME SHOP</button>
   <div class="trust-note">100% OFFLINE · NO ADS · NO IN-APP PURCHASES</div>
 </div>
 
@@ -1432,9 +1532,11 @@ body{font-family:'Nunito',sans-serif;color:#fff}
             <div class="hp-fill" id="eHpFill" style="width:100%"></div>
             <div class="hp-num" id="eHpNum">5</div>
           </div>
+          <div class="e-shield" id="eShield" style="display:none"></div>
         </div>
         <div class="hud-mid">
           <div class="score-box">⭐<span id="scoreD">0</span></div>
+          <div class="coin-box">🪙<span id="coinD">0</span></div>
           <div class="lv-box">LV<span id="lvD">1</span></div>
         </div>
         <div class="hud-side hud-right">
@@ -1487,10 +1589,25 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   <div class="map-wrap">
     <div class="map-stars" id="mapStars"></div>
     <div class="map-title">⚔ JOURNEY MAP ⚔</div>
+    <div class="map-coins-line">🪙 <span id="mapCoins">0</span></div>
     <div class="map-hero-tag" id="mapHeroTag">NINJA ► EMERALD VILLAGE</div>
     <div class="journey-scroll" id="journeyScroll"></div>
     <button class="map-play-btn" id="mapPlayBtn" onclick="startSelectedLevel()">► BATTLE!</button>
-    <button class="map-back-btn" onclick="goHome()">◄ HOME</button>
+    <div class="map-btn-row">
+      <button class="map-back-btn" onclick="goHome()">◄ HOME</button>
+      <button class="map-back-btn" onclick="openShop()">🛍 SHOP</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ SHOP ════════════ -->
+<div class="screen" id="s-shop">
+  <div class="shop-wrap">
+    <div class="shop-title">🛍 COSTUME SHOP</div>
+    <div class="shop-coins">🪙 <span id="shopCoins">0</span></div>
+    <div class="shop-tabs" id="shopTabs"></div>
+    <div class="shop-grid" id="shopGrid"></div>
+    <button class="map-back-btn" onclick="closeShop()">◄ BACK</button>
   </div>
 </div>
 
@@ -1506,7 +1623,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   </div>
   <div class="r-btns">
     <button class="rbtn rbtn-a" id="nextBtn" onclick="nextLevel()">► JOURNEY MAP</button>
-    <button class="rbtn rbtn-b" onclick="startBattle()">↺ NEW JOURNEY</button>
+    <button class="rbtn rbtn-b" onclick="resetJourney()">↺ NEW JOURNEY</button>
     <button class="rbtn rbtn-c" onclick="goHome()">⌂ HOME</button>
   </div>
 </div>
@@ -1535,10 +1652,33 @@ body{font-family:'Nunito',sans-serif;color:#fff}
    bobs, arms sway; pose classes override parts.
 ═══════════════════════════════════════════ */
 
-function heroSVG(kind){
-  if(kind==='ninja') return ninjaSVG();
-  if(kind==='saiyan') return cosmicSVG();
-  return rangerSVG();
+/* Costume palettes — unlockable in the shop */
+const COSTUMES={
+  ninja:{
+    default:{label:'CLASSIC',price:0,  suit:'#2A3B66',suit2:'#1D2A4A',accent:'#FF7A00',scarf:'#E53935',scarf2:'#D32F2F'},
+    crimson:{label:'CRIMSON',price:80, suit:'#8E2430',suit2:'#611420',accent:'#FFD23C',scarf:'#FF8A65',scarf2:'#F4511E'},
+    shadow:{label:'SHADOW', price:150,suit:'#241645',suit2:'#170D30',accent:'#B266FF',scarf:'#7C4DFF',scarf2:'#651FFF'},
+  },
+  saiyan:{
+    default:{label:'CLASSIC',price:0,  suit:'#FFD23C',suit2:'#F2B300',glove:'#E53935',cape:'#F5F5F5',cape2:'#E8E8E8'},
+    silver:{label:'SILVER', price:80, suit:'#ECEFF1',suit2:'#B0BEC5',glove:'#1565C0',cape:'#B0BEC5',cape2:'#90A4AE'},
+    volcano:{label:'VOLCANO',price:150,suit:'#FF7043',suit2:'#E64A19',glove:'#212121',cape:'#FFCCBC',cape2:'#FFAB91'},
+  },
+  spider:{
+    default:{label:'CLASSIC',price:0,  suit:'#8E24AA',dark:'#212121',visor:'#FFD600'},
+    golden:{label:'GOLDEN', price:80, suit:'#F9A825',dark:'#4E342E',visor:'#FFF9C4'},
+    frost:{label:'FROST',  price:150,suit:'#0288D1',dark:'#102840',visor:'#B3E5FC'},
+  }
+};
+function heroPalette(kind,costumeKey){
+  const set=COSTUMES[kind];
+  return set[costumeKey||((G.worn&&G.worn[kind])||'default')]||set.default;
+}
+function heroSVG(kind,costumeKey){
+  const p=heroPalette(kind,costumeKey);
+  if(kind==='ninja') return ninjaSVG(p);
+  if(kind==='saiyan') return cosmicSVG(p);
+  return rangerSVG(p);
 }
 
 /* Shared chibi body helper — torso/arms/legs in outfit colors.
@@ -1578,13 +1718,13 @@ function chibiFace(o){
   <g class="ch-m ch-m-joy" opacity="0"><path d="M51 62 Q60 74 69 62 Z" fill="#7A3B20"/><path d="M55 68 Q60 71 65 68 Z" fill="#FF8A80"/></g>`;
 }
 
-function ninjaSVG(){
-  const skin='#FFCC99', suit='#2A3B66', suit2='#1D2A4A', accent='#FF7A00';
+function ninjaSVG(p){
+  const skin='#FFCC99', suit=p.suit, suit2=p.suit2, accent=p.accent;
   return `<svg class="ch" viewBox="0 0 120 150">
   <g class="ch-root">
     <g class="ch-scarf">
-      <path d="M44 74 Q60 82 76 74 L74 84 Q60 90 46 84 Z" fill="#E53935"/>
-      <path class="ch-scarf-tail" d="M74 78 Q94 84 100 102 Q92 106 84 100 Q78 92 72 86 Z" fill="#D32F2F"/>
+      <path d="M44 74 Q60 82 76 74 L74 84 Q60 90 46 84 Z" fill="${p.scarf}"/>
+      <path class="ch-scarf-tail" d="M74 78 Q94 84 100 102 Q92 106 84 100 Q78 92 72 86 Z" fill="${p.scarf2}"/>
     </g>
     <g class="ch-legs">
       <rect x="44" y="112" width="13" height="26" rx="6.5" fill="${suit2}"/>
@@ -1626,13 +1766,13 @@ function ninjaSVG(){
 }
 
 /* CAPTAIN PUNCH — bald caped hero, one mighty fist */
-function cosmicSVG(){
-  const skin='#FFDDAA', suit='#FFD23C', suit2='#F2B300', glove='#E53935';
+function cosmicSVG(p){
+  const skin='#FFDDAA', suit=p.suit, suit2=p.suit2, glove=p.glove;
   return `<svg class="ch" viewBox="0 0 120 150">
   <g class="ch-root">
     <g class="ch-cape">
-      <path d="M40 76 Q60 70 80 76 L92 128 Q76 122 60 130 Q44 122 28 128 Z" fill="#F5F5F5"/>
-      <path d="M40 76 Q60 70 80 76 L86 100 Q60 92 34 100 Z" fill="#E8E8E8"/>
+      <path d="M40 76 Q60 70 80 76 L92 128 Q76 122 60 130 Q44 122 28 128 Z" fill="${p.cape}"/>
+      <path d="M40 76 Q60 70 80 76 L86 100 Q60 92 34 100 Z" fill="${p.cape2}"/>
     </g>
     <g class="ch-legs">
       <rect x="44" y="112" width="13" height="26" rx="6.5" fill="${suit}"/>
@@ -1670,16 +1810,16 @@ function cosmicSVG(){
   </g></svg>`;
 }
 
-function rangerSVG(){
-  const suit='#8E24AA', dark='#212121';
+function rangerSVG(p){
+  const suit=p.suit, dark=p.dark, visor=p.visor;
   return `<svg class="ch" viewBox="0 0 120 150">
   <g class="ch-root">
-    ${chibiBody({suit:suit,pants:dark,shoes:suit,hands:'#FFD600',belt:'#4A0072',
+    ${chibiBody({suit:suit,pants:dark,shoes:suit,hands:visor,belt:dark,
       chest:'<path d="M60 82 L63 89 L71 89 L65 94 L67 101 L60 97 L53 101 L55 94 L49 89 L57 89 Z" fill="#FFD600"/>'})}
     <g class="ch-head">
       <circle cx="60" cy="46" r="30" fill="${suit}"/>
       <path d="M60 16 L60 76" stroke="#6A1B9A" stroke-width="3"/>
-      <rect x="29" y="38" width="62" height="17" rx="8.5" fill="#FFD600"/>
+      <rect x="29" y="38" width="62" height="17" rx="8.5" fill="${visor}"/>
       <g class="ch-eye"><ellipse cx="46" cy="46.5" rx="9" ry="6.5" fill="#fff"/><ellipse cx="47.5" cy="47" rx="4" ry="3.4" fill="#311B92"/></g>
       <g class="ch-eye"><ellipse cx="74" cy="46.5" rx="9" ry="6.5" fill="#fff"/><ellipse cx="75.5" cy="47" rx="4" ry="3.4" fill="#311B92"/></g>
       <path class="ch-m ch-m-idle" d="M53 64 Q60 70 67 64" stroke="#4A0072" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -1827,7 +1967,7 @@ const JOURNEY = {
       { name:'🏔 STONE VILLAGE',    color:'#FF8C00', borderColor:'#E65100',
         levels:[
           {lv:3, name:'Stone Bridge',   detail:'3 questions · Medium',  enemyIdx:1, bgm:'ninja'},
-          {lv:4, name:'Cliff Pass',     detail:'4 questions · Medium',  enemyIdx:1, bgm:'ninja'},
+          {lv:4, name:'Cliff Pass',     detail:'Mini boss! · Medium',   enemyIdx:1, bgm:'ninja', boss:1},
         ]
       },
       { name:'🌑 SHADOW REALM',     color:'#9C27B0', borderColor:'#6A1B9A',
@@ -1839,7 +1979,7 @@ const JOURNEY = {
       { name:'💀 FINAL FORTRESS',   color:'#F44336', borderColor:'#B71C1C',
         levels:[
           {lv:7, name:'Demon Tower',    detail:'5 questions · Expert',  enemyIdx:2, bgm:'ninja'},
-          {lv:8, name:'FINAL BOSS',     detail:'6 questions · LEGEND!', enemyIdx:2, bgm:'ninja'},
+          {lv:8, name:'FINAL BOSS',     detail:'Big boss! · LEGEND!',   enemyIdx:2, bgm:'ninja', boss:2},
         ]
       },
     ]
@@ -1855,7 +1995,7 @@ const JOURNEY = {
       { name:'🌌 CRYSTAL PLANET',   color:'#00BCD4', borderColor:'#006064',
         levels:[
           {lv:3, name:'Crystal Plains', detail:'3 questions · Medium',  enemyIdx:0, bgm:'saiyan'},
-          {lv:4, name:'Crystal Cave',   detail:'4 questions · Medium',  enemyIdx:1, bgm:'saiyan'},
+          {lv:4, name:'Crystal Cave',   detail:'Mini boss! · Medium',   enemyIdx:1, bgm:'saiyan', boss:1},
         ]
       },
       { name:'☁️ CHRONO DOME',      color:'#FF9800', borderColor:'#E65100',
@@ -1867,7 +2007,7 @@ const JOURNEY = {
       { name:'💀 DARK PLANET',      color:'#F44336', borderColor:'#B71C1C',
         levels:[
           {lv:7, name:'Dark Crater',    detail:'5 questions · Expert',  enemyIdx:2, bgm:'saiyan'},
-          {lv:8, name:'FINAL TYRANT',   detail:'6 questions · LEGEND!', enemyIdx:2, bgm:'saiyan'},
+          {lv:8, name:'FINAL TYRANT',   detail:'Big boss! · LEGEND!',   enemyIdx:2, bgm:'saiyan', boss:2},
         ]
       },
     ]
@@ -1883,7 +2023,7 @@ const JOURNEY = {
       { name:'🌉 RIVER BRIDGE',     color:'#9C27B0', borderColor:'#4A148C',
         levels:[
           {lv:3, name:'Bridge Cables',  detail:'3 questions · Medium',  enemyIdx:1, bgm:'spider'},
-          {lv:4, name:'Bridge Tower',   detail:'4 questions · Medium',  enemyIdx:1, bgm:'spider'},
+          {lv:4, name:'Bridge Tower',   detail:'Mini boss! · Medium',   enemyIdx:1, bgm:'spider', boss:1},
         ]
       },
       { name:'🏗️ TECH TOWER',      color:'#FF9800', borderColor:'#E65100',
@@ -1895,7 +2035,7 @@ const JOURNEY = {
       { name:'💀 SHADOW LAIR',      color:'#F44336', borderColor:'#B71C1C',
         levels:[
           {lv:7, name:'Beast Hive',     detail:'5 questions · Expert',  enemyIdx:2, bgm:'spider'},
-          {lv:8, name:'FINAL SHOWDOWN', detail:'6 questions · LEGEND!', enemyIdx:2, bgm:'spider'},
+          {lv:8, name:'FINAL SHOWDOWN', detail:'Big boss! · LEGEND!',   enemyIdx:2, bgm:'spider', boss:2},
         ]
       },
     ]
@@ -2058,12 +2198,54 @@ function drawSky(){
 let G={heroKey:'ninja',level:1,score:0,streak:0,bestStreak:0,
   heroHp:5,heroMaxHp:5,enemyHp:4,enemyMaxHp:4,
   locked:false,phase:'idle',currentQ:null,
-  journeyProgress:{},journeyStars:{},journeyScore:0,mistakes:0};
+  journeyProgress:{},journeyStars:{},journeyScore:0,mistakes:0,
+  coins:0,
+  owned:{ninja:['default'],saiyan:['default'],spider:['default']},
+  worn:{ninja:'default',saiyan:'default',spider:'default'},
+  heroSaves:{},        // per-hero {progress:{},stars:{}}
+  isBoss:false,bossShield:0,bossEnraged:false};
+
+/* ═══ SAVE SYSTEM — progress survives app restarts ═══ */
+const SAVE_KEY='hmb_save_v1';
+function saveGame(){
+  try{
+    localStorage.setItem(SAVE_KEY,JSON.stringify({
+      v:1,coins:G.coins,owned:G.owned,worn:G.worn,
+      heroSaves:G.heroSaves,
+      sound:(typeof AUD!=='undefined'&&AUD.isOn)?AUD.isOn():true
+    }));
+  }catch(e){}
+}
+function loadGame(){
+  try{
+    const d=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');
+    if(!d)return;
+    if(typeof d.coins==='number')G.coins=d.coins;
+    if(d.owned)G.owned=Object.assign(G.owned,d.owned);
+    if(d.worn)G.worn=Object.assign(G.worn,d.worn);
+    if(d.heroSaves)G.heroSaves=d.heroSaves;
+    G._savedSound=d.sound;
+  }catch(e){}
+}
+loadGame();
+function persistHeroJourney(){
+  G.heroSaves[G.heroKey]={progress:G.journeyProgress,stars:G.journeyStars};
+  saveGame();
+}
+function updateCoinDisplays(){
+  const b=$('coinD');if(b)b.textContent=G.coins;
+  const m=$('mapCoins');if(m)m.textContent=G.coins;
+  const s=$('shopCoins');if(s)s.textContent=G.coins;
+}
 
 function rnd(lo,hi){return Math.floor(Math.random()*(hi-lo+1))+lo}
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function $(id){return document.getElementById(id)}
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active')}
+function getLvData(){
+  const j=JOURNEY[G.heroKey];
+  return j.zones.flatMap(z=>z.levels).find(l=>l.lv===G.level);
+}
 function getEnemy(){
   const h=HEROES[G.heroKey];
   const j=JOURNEY[G.heroKey];
@@ -2094,11 +2276,81 @@ window.addEventListener('load',()=>{
 
 /* ── START ── */
 function startBattle(){
-  // Reset journey for fresh run
-  G.journeyProgress={};G.journeyScore=0;
+  // Continue the hero's saved journey (persisted across sessions)
+  const sv=G.heroSaves[G.heroKey]||{};
+  G.journeyProgress=Object.assign({},sv.progress||{});
+  G.journeyStars=Object.assign({},sv.stars||{});
+  G.journeyScore=0;
   G.score=0;G.streak=0;G.bestStreak=0;
   G_selectedLevel=1;
   showMap();
+}
+function resetJourney(){
+  delete G.heroSaves[G.heroKey];
+  saveGame();
+  startBattle();
+}
+
+/* ═══ COSTUME SHOP ═══ */
+let _shopHero='ninja';
+let _shopReturn='s-intro';
+function openShop(){
+  _shopReturn=document.querySelector('.screen.active').id||'s-intro';
+  _shopHero=G.heroKey||'ninja';
+  renderShop();
+  showScreen('s-shop');
+}
+function closeShop(){
+  showScreen(_shopReturn);
+  if(_shopReturn==='s-intro'){['ninja','saiyan','spider'].forEach(drawPreview);}
+}
+function renderShop(){
+  updateCoinDisplays();
+  const tabs=$('shopTabs');tabs.innerHTML='';
+  [['ninja','NINJA'],['saiyan','PUNCH'],['spider','RANGER']].forEach(([k,label])=>{
+    const t=document.createElement('button');
+    t.className='shop-tab'+(k===_shopHero?' active':'');
+    t.textContent=label;
+    t.onclick=()=>{_shopHero=k;renderShop();};
+    tabs.appendChild(t);
+  });
+  const grid=$('shopGrid');grid.innerHTML='';
+  Object.entries(COSTUMES[_shopHero]).forEach(([key,cst])=>{
+    const ownedList=G.owned[_shopHero]||[];
+    const owned=ownedList.includes(key);
+    const worn=(G.worn[_shopHero]||'default')===key;
+    const card=document.createElement('div');
+    card.className='shop-card'+(worn?' worn':'');
+    const prev=document.createElement('div');
+    prev.className='shop-prev';
+    prev.innerHTML=heroSVG(_shopHero,key);
+    card.appendChild(prev);
+    const nm=document.createElement('div');
+    nm.className='shop-name';nm.textContent=cst.label;
+    card.appendChild(nm);
+    const btn=document.createElement('button');
+    if(worn){
+      btn.className='shop-btn wornb';btn.textContent='✓ WORN';
+    }else if(owned){
+      btn.className='shop-btn wear';btn.textContent='WEAR';
+      btn.onclick=()=>{
+        G.worn[_shopHero]=key;saveGame();renderShop();
+        if(G.heroKey===_shopHero)applyHeroCanvas&&$('heroCanvas')&&applyHeroCanvas();
+      };
+    }else{
+      btn.className='shop-btn buy';btn.textContent='🪙 '+cst.price;
+      btn.disabled=G.coins<cst.price;
+      btn.onclick=()=>{
+        if(G.coins<cst.price)return;
+        G.coins-=cst.price;
+        (G.owned[_shopHero]=G.owned[_shopHero]||[]).push(key);
+        G.worn[_shopHero]=key;
+        saveGame();renderShop();
+      };
+    }
+    card.appendChild(btn);
+    grid.appendChild(card);
+  });
 }
 
 function applyTheme(){
@@ -2110,10 +2362,22 @@ function applyTheme(){
 
 function loadEnemy(){
   const e=getEnemy();
-  // HP = number of correct answers needed (scales 3→8 across journey)
-  const baseHp=Math.min(8, 2+G.level);
+  const lvData=getLvData();
+  const bossLv=(lvData&&lvData.boss)||0;
+  G.isBoss=bossLv>0;
+  G.bossShield=bossLv;      // shield hits needed before HP can drop
+  G.bossEnraged=false;
+  // HP = number of correct answers needed (scales 3→8; bosses get +2)
+  const baseHp=Math.min(8, 2+G.level)+(G.isBoss?2:0);
   G.enemyHp=baseHp;G.enemyMaxHp=baseHp;
-  $('eName').textContent=e.name;
+  $('eName').textContent=(G.isBoss?'👑 ':'')+e.name;
+  $('enemyWrap').classList.toggle('boss-mode',G.isBoss);
+  if(G.isBoss){
+    setTimeout(()=>{
+      spawnCombo(bossLv>=2?'👑 BOSS BATTLE! 👑':'⚠ MINI BOSS! ⚠','#FF5252');
+      spawnFlash('#FF525233');
+    },500);
+  }
   $('enemyCanvas').innerHTML=enemySVG(e.kind,e.color);
   // Reset any leftover death/hit/lunge animation state from a previous battle
   const eOuter=$('enemyOuter');
@@ -2123,6 +2387,7 @@ function loadEnemy(){
     eOuter.classList.add('anim-enemy-idle');
   }
   updateBars();$('lvD').textContent=G.level;
+  updateCoinDisplays();
 }
 
 function applyHeroCanvas(){
@@ -2143,10 +2408,19 @@ function beginPhase(){
 /* Math curriculum for ages 5-8, difficulty rises across the 8-level journey:
    lv1-2: addition to 10/20 · lv3-4: add/sub to 20/50
    lv5-6: add/sub to 100 + intro ×2/×5 · lv7-8: ×2/×5/×10 + mixed review */
+const COUNT_EMOJI=['🍎','🍌','⭐','🐠','🎈','🍪'];
 function makeQ(){
   const lv=G.level;
   let a,b,ans,text;
   const table=()=>[2,5,10][rnd(0,2)];
+  // Picture counting questions for young players (levels 1-3)
+  if(lv<=3&&Math.random()<.4){
+    const em=COUNT_EMOJI[rnd(0,COUNT_EMOJI.length-1)];
+    a=rnd(1,5);b=rnd(1,Math.min(5,10-a));ans=a+b;
+    const html=em.repeat(a)+'<span class="q-plus"> + </span>'+em.repeat(b)+'<span class="q-plus"> = ?</span>';
+    const w=[];while(w.length<3){const v=rnd(Math.max(1,ans-3),Math.min(10,ans+3));if(v!==ans&&!w.includes(v))w.push(v)}
+    return{text:a+' + '+b+' = ?',html,ans,options:shuffle([ans,...w])};
+  }
   if(lv===1){
     a=rnd(1,5);b=rnd(1,5);ans=a+b;text=`${a} + ${b} = ?`;
   } else if(lv===2){
@@ -2183,7 +2457,13 @@ function showQuestion(){
   let tags=['CHARGE JUTSU!','POWER UP!','ANSWER NOW!','JUTSU CHARGE!'];
   if(G.streak>=2) tags=['STREAK x'+G.streak+'! KEEP GOING!','ON FIRE! x'+G.streak,'COMBO x'+G.streak+'!'];
   $('qTag').textContent=tags[rnd(0,tags.length-1)];
-  $('qMath').textContent=G.currentQ.text;
+  if(G.currentQ.html){
+    $('qMath').innerHTML=G.currentQ.html;
+    $('qMath').classList.add('q-visual');
+  }else{
+    $('qMath').textContent=G.currentQ.text;
+    $('qMath').classList.remove('q-visual');
+  }
   $('qMath').classList.add('glow');
   G.currentQ.options.forEach((o,i)=>{
     const b=$('ab'+i);b.textContent=o;b.className='ab';b.disabled=false;b.style.opacity='';b.style.pointerEvents='';
@@ -2211,6 +2491,7 @@ function answer(idx){
     G.streak++;if(G.streak>G.bestStreak)G.bestStreak=G.streak;
     G.score+=10*G.level*(G.streak>=3?2:1);
     $('scoreD').textContent=G.score;
+    G.coins+=2;updateCoinDisplays();
     if(G.streak===3)spawnCombo('TRIPLE!!','#FF6B00');
     else if(G.streak===5)spawnCombo('ON FIRE!!','#FFD600');
     else if(G.streak>=7)spawnCombo('LEGENDARY!','#CC0000');
@@ -2299,10 +2580,7 @@ function fireJutsu(idx){
         setEnemyAnim('hurt',700);
         shakeEnemy();
         flashEnemyHit(700);
-        G.enemyHp=Math.max(0,G.enemyHp-j.dmg);
-        updateBars();
-        spawnDmg(j.dmg,ex,ey,j.color);
-        G.score+=j.dmg*5*G.level;$('scoreD').textContent=G.score;
+        dealDamageToEnemy(j,ex,ey);
         setTimeout(()=>{
           if(G.enemyHp<=0){
             setEnemyAnim('dead');playEnemyDead();
@@ -2323,10 +2601,7 @@ function fireJutsu(idx){
           setEnemyAnim('hurt',600);
           shakeEnemy();
           flashEnemyHit(600);
-          G.enemyHp=Math.max(0,G.enemyHp-j.dmg);
-          updateBars();
-          spawnDmg(j.dmg,ex,ey,j.color);
-          G.score+=j.dmg*5*G.level;$('scoreD').textContent=G.score;
+          dealDamageToEnemy(j,ex,ey);
           setTimeout(()=>{
             if(G.enemyHp<=0){
               setEnemyAnim('dead');playEnemyDead();
@@ -2635,7 +2910,8 @@ function spawnImpact(emoji,x,y,color){
 }
 function spawnDmg(dmg,x,y,color){
   const el=document.createElement('div');el.className='dmg-num';
-  el.style.cssText=`left:${x}px;top:${y}px;color:${color}`;el.textContent='-'+dmg;
+  el.style.cssText=`left:${x}px;top:${y}px;color:${color}`;
+  el.textContent=(typeof dmg==='number')?('-'+dmg):dmg;
   document.body.appendChild(el);setTimeout(()=>el.remove(),960);
 }
 function spawnFlash(color){
@@ -2668,6 +2944,33 @@ function updateBars(){
   $('eHpFill').style.width=ep+'%';$('eHpNum').textContent=G.enemyHp+'/'+G.enemyMaxHp;
   $('eHpFill').style.background=ep<30?'#FF1744':'';
   $('heroHearts').innerHTML='❤️'.repeat(G.heroHp)+'🤍'.repeat(Math.max(0,G.heroMaxHp-G.heroHp));
+  const sh=$('eShield');
+  if(sh){sh.textContent='🛡'.repeat(G.bossShield);sh.style.display=G.bossShield>0?'':'none';}
+}
+
+/* Central damage application — boss shields soak hits first */
+function dealDamageToEnemy(j,ex,ey){
+  if(G.bossShield>0){
+    G.bossShield--;
+    updateBars();
+    spawnDmg('🛡',ex,ey,'#4D9FFF');
+    if(G.bossShield<=0){
+      spawnCombo('SHIELD BREAK!','#4D9FFF');
+      spawnFlash('#4D9FFF44');
+    }
+    return;
+  }
+  G.enemyHp=Math.max(0,G.enemyHp-j.dmg);
+  updateBars();
+  spawnDmg(j.dmg,ex,ey,j.color);
+  G.score+=j.dmg*5*G.level;$('scoreD').textContent=G.score;
+  // Big boss enrages at half HP: shield comes back once
+  if(G.isBoss&&!G.bossEnraged&&G.enemyHp>0&&G.enemyHp<=Math.ceil(G.enemyMaxHp/2)){
+    G.bossEnraged=true;
+    G.bossShield=1;
+    updateBars();
+    setTimeout(()=>{spawnCombo('BOSS ENRAGED!','#FF5252');spawnFlash('#FF525233');},350);
+  }
 }
 
 /* ── WIN / LOSE ── */
@@ -2678,6 +2981,9 @@ function endWin(){
   const stars=G.mistakes===0?3:G.mistakes===1?2:1;
   G.journeyStars[G.level]=Math.max(G.journeyStars[G.level]||0,stars);
   G.journeyScore=G.score;
+  G.coins+=10+stars*5+(G.isBoss?25:0);
+  updateCoinDisplays();
+  persistHeroJourney();
   AUD.stopBGM();
   const allLevels=JOURNEY[G.heroKey].zones.flatMap(z=>z.levels);
   const allDone=allLevels.every(l=>G.journeyProgress[l.lv]);
@@ -2702,6 +3008,7 @@ function endWin(){
 }
 function endLose(){
   animRunning=false;
+  saveGame();
   AUD.stopBGM();
   $('lS').textContent=G.score;$('lSt').textContent=G.bestStreak;
   const m=['TRAIN HARDER, HERO!','EVERY HERO FALLS FIRST!','YOU ALMOST HAD IT!'];
@@ -3030,6 +3337,7 @@ function showMap(){
     if(activeNode) activeNode.scrollIntoView({behavior:'smooth',block:'center'});
   },100);
 
+  updateCoinDisplays();
   showScreen('s-map');
 }
 
@@ -3543,8 +3851,14 @@ const AUD = (function(){
     btn.style.borderColor=on?'#FFD600':'#555';
     btn.style.color=on?'#FFD600':'#555';
     btn.style.boxShadow='0 3px 8px rgba(0,0,0,.45)';
+    saveGame();
   };
   document.body.appendChild(btn);
+  // Restore saved sound preference
+  if(G._savedSound===false&&AUD.isOn()){
+    AUD.toggle();
+    btn.textContent='🔇';btn.style.borderColor='#555';btn.style.color='#555';
+  }
 })();
 
 /* ─── WIRE AUDIO INTO GAME EVENTS ─── */
