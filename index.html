@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a0a2e">
 <title>⚡ Hero Math Battle</title>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Bangers&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════
    PIXEL ART ENGINE
@@ -77,8 +77,8 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   margin-bottom:4px;
 }
 .logo-sub{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(8px,2vw,11px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(12px,2vw,11px);
   color:#aaa;letter-spacing:1px;
 }
 @keyframes logoPop{from{transform:scale(.4) rotate(-8deg);opacity:0}to{transform:none;opacity:1}}
@@ -93,10 +93,10 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 
 .hcard{
   width:clamp(100px,28vw,140px);
-  border-radius:16px;padding:14px 10px 12px;
+  border-radius:22px;padding:14px 10px 12px;
   text-align:center;cursor:pointer;
-  border:3px solid rgba(255,255,255,.15);
-  background:rgba(255,255,255,.05);
+  border:3px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.07);
   transition:transform .2s,box-shadow .2s,border-color .2s;
   position:relative;overflow:hidden;
 }
@@ -110,16 +110,15 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 .hcard.sel[data-h="saiyan"]{border-color:#FFD600;box-shadow:0 0 25px #FFD600,0 6px 0 #8B7200}
 .hcard.sel[data-h="spider"]{border-color:#7B1FA2;box-shadow:0 0 25px #7B1FA2,0 6px 0 #4A0072}
 
-/* Pixel preview sprite in card */
+/* Cartoon preview sprite in card */
 .h-preview{
-  width:100%;height:80px;
+  width:100%;height:88px;
   display:flex;align-items:center;justify-content:center;
   margin-bottom:8px;
   position:relative;
 }
-.h-preview canvas{
+.h-preview .prev-slot svg{
   width:auto;height:100%;max-width:100%;
-  image-rendering:pixelated;
 }
 .sprite-container{
   image-rendering:pixelated;
@@ -127,14 +126,14 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 }
 
 .h-name{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(9px,2.5vw,12px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(13px,2.5vw,12px);
   letter-spacing:0px;margin-bottom:4px;
 }
 .hcard[data-h="ninja"] .h-name{color:#FF6B00}
 .hcard[data-h="saiyan"] .h-name{color:#FFD600}
 .hcard[data-h="spider"] .h-name{color:#B44FE0}
-.h-sub{font-size:9px;color:#888;font-family:'Press Start 2P',monospace;line-height:1.6}
+.h-sub{font-size:12px;color:#888;font-family:'Baloo 2','Nunito',sans-serif;line-height:1.6}
 
 .go-btn{
   font-family:'Bangers',cursive;
@@ -150,9 +149,9 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 .go-btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
 .trust-note{
   margin-top:14px;text-align:center;
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(6px,1.6vw,9px);
-  letter-spacing:1px;color:#555;
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(14px,1.6vw,9px);
+  letter-spacing:1px;color:#8a8fb0;
 }
 
 /* ═══════════════════════════════
@@ -197,12 +196,9 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 
 /* Pixel ground line */
 .gnd-line{
-  position:absolute;top:0;left:0;right:0;height:6px;
-  image-rendering:pixelated;
+  position:absolute;top:0;left:0;right:0;height:12px;
 }
-.gnd-ninja .gnd-line{background:repeating-linear-gradient(90deg,#8BC34A 0px,#8BC34A 8px,#7CB342 8px,#7CB342 16px)}
-.gnd-saiyan .gnd-line{background:repeating-linear-gradient(90deg,#FF8F00 0px,#FF8F00 8px,#F57F17 8px,#F57F17 16px)}
-.gnd-spider .gnd-line{background:repeating-linear-gradient(90deg,#1565C0 0px,#1565C0 8px,#0D47A1 8px,#0D47A1 16px)}
+.gnd-line{background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(255,255,255,0))}
 
 /* HUD */
 .hud{
@@ -213,42 +209,46 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 .hud-side{flex:1}
 .hud-right{text-align:right}
 .f-name{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(7px,2vw,10px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(11px,2vw,10px);
   letter-spacing:0;margin-bottom:4px;
 }
 .f-name.e-col{color:#FF4444;text-shadow:1px 1px 0 #000,0 0 8px #FF4444}
 .f-name.h-col{color:#00E676;text-shadow:1px 1px 0 #000,0 0 8px #00E676}
 .hp-wrap{
-  position:relative;height:14px;
-  background:#111;border-radius:0;
-  border:2px solid rgba(255,255,255,.3);
-  image-rendering:pixelated;
+  position:relative;height:17px;
+  background:rgba(0,0,20,.55);border-radius:10px;
+  border:2px solid rgba(255,255,255,.4);
   overflow:hidden;
 }
 .hp-fill{height:100%;transition:width .5s ease;image-rendering:pixelated}
-.hp-e .hp-fill{background:repeating-linear-gradient(90deg,#FF1744 0,#FF1744 6px,#CC0000 6px,#CC0000 8px)}
-.hp-h .hp-fill{background:repeating-linear-gradient(90deg,#00E676 0,#00E676 6px,#00C853 6px,#00C853 8px)}
+.hp-e .hp-fill{background:linear-gradient(180deg,#FF7373,#E53935);border-radius:8px}
+.hp-h .hp-fill{background:linear-gradient(180deg,#7CF29C,#2FBF5B);border-radius:8px}
 .hp-num{
   position:absolute;right:5px;top:50%;transform:translateY(-50%);
-  font-family:'Press Start 2P',monospace;font-size:8px;
+  font-family:'Baloo 2','Nunito',sans-serif;font-size:11px;
   color:#fff;text-shadow:1px 1px 0 #000;
+}
+.hearts{
+  font-size:clamp(13px,3.6vw,19px);
+  letter-spacing:1px;line-height:1.4;
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.4));
 }
 .hud-mid{display:flex;flex-direction:column;align-items:center;pointer-events:none;padding:0 5px}
 .score-box{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(7px,2vw,10px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(11px,2vw,10px);
   color:#FFD600;
-  background:#000;border:2px solid #FFD600;
-  padding:3px 8px;white-space:nowrap;
+  background:rgba(0,0,20,.75);border:2px solid #FFD600;border-radius:12px;
+  padding:3px 10px;white-space:nowrap;
   text-shadow:1px 1px 0 #8B7200;
-  box-shadow:2px 2px 0 #8B7200;
+  box-shadow:0 2px 6px rgba(139,114,0,.55);
 }
 .lv-box{
-  font-family:'Press Start 2P',monospace;
-  font-size:8px;color:#aaa;
-  margin-top:3px;background:#000;
-  border:1px solid #555;padding:2px 6px;
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:11px;color:#aaa;
+  margin-top:3px;background:rgba(0,0,20,.75);
+  border:1px solid #777;border-radius:9px;padding:2px 8px;
 }
 
 /* ═══════════════════════════════
@@ -305,7 +305,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 ═══════════════════════════════ */
 .hero-wrap{
   position:absolute;
-  bottom:16%;left:50%;transform:translateX(-50%);
+  bottom:25%;left:50%;transform:translateX(-50%);
   z-index:20;text-align:center;
 }
 .hero-sprite-outer{
@@ -313,19 +313,19 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   transform-origin:bottom center;
 }
 /* Idle bob */
-.anim-idle{animation:spriteIdle 1s steps(1) infinite}
+.anim-idle{animation:spriteIdle 1s ease-in-out infinite}
 @keyframes spriteIdle{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-4px)}
 }
 /* Charge glow */
-.anim-charge{animation:spriteCharge .5s steps(1) infinite!important}
+.anim-charge{animation:spriteCharge .5s ease-in-out infinite!important}
 @keyframes spriteCharge{
   0%,100%{filter:brightness(1.2) drop-shadow(0 0 6px gold)}
   50%{filter:brightness(2) drop-shadow(0 0 16px gold) drop-shadow(0 0 30px #FFD600)}
 }
 /* Attack leap */
-.anim-attack{animation:spriteAttack .5s steps(2) forwards!important}
+.anim-attack{animation:spriteAttack .5s ease-out forwards!important}
 @keyframes spriteAttack{
   0%{transform:translateX(0) translateY(0) scaleX(1)}
   40%{transform:translateX(40px) translateY(-50px) scaleX(1.15)}
@@ -333,14 +333,14 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   100%{transform:translateX(0) translateY(0) scaleX(1)}
 }
 /* Hurt */
-.anim-hurt{animation:spriteHurt .4s steps(2) forwards!important}
+.anim-hurt{animation:spriteHurt .4s ease-out forwards!important}
 @keyframes spriteHurt{
   0%,100%{transform:translateX(0);filter:brightness(1)}
   25%{transform:translateX(-10px);filter:brightness(3) saturate(0)}
   75%{transform:translateX(8px);filter:brightness(3) saturate(0)}
 }
 /* Victory */
-.anim-victory{animation:spriteVictory .6s steps(2) infinite!important}
+.anim-victory{animation:spriteVictory .6s ease-out infinite!important}
 @keyframes spriteVictory{
   0%,100%{transform:translateY(0) rotate(0deg)}
   50%{transform:translateY(-12px) rotate(-5deg)}
@@ -357,7 +357,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   transform-origin:bottom center;
   transform:scaleX(-1); /* face left */
 }
-.anim-enemy-idle{animation:enemyIdle 1.5s steps(1) infinite}
+.anim-enemy-idle{animation:enemyIdle 1.5s ease-in-out infinite}
 @keyframes enemyIdle{
   0%,100%{transform:scaleX(-1) translateY(0)}
   33%{transform:scaleX(-1) translateY(-6px) rotate(2deg)}
@@ -399,13 +399,13 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 .hero-hit-flash{
   position:absolute;inset:0;pointer-events:none;z-index:25;
   background:rgba(255,30,30,.55);
-  animation:heroFlash .4s steps(3) forwards;
+  animation:heroFlash .4s ease-out forwards;
   border-radius:4px;
 }
 @keyframes heroFlash{0%{opacity:1}100%{opacity:0}}
 /* Enemy pre-attack aura — danger red */
 .enemy-pre-attack{
-  animation:enemyPreAtk .35s steps(1) infinite!important;
+  animation:enemyPreAtk .35s ease-in-out infinite!important;
 }
 @keyframes enemyPreAtk{
   0%,100%{filter:brightness(1.4) drop-shadow(0 0 10px #FF2222) drop-shadow(0 0 24px #FF0000)}
@@ -441,14 +441,14 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   50%{transform:translate(-50%,-50%) scale(1.3) rotate(10deg);opacity:1}
   100%{transform:translate(-50%,-50%) scale(.7) rotate(-5deg);opacity:0}
 }
-.anim-enemy-dead{animation:enemyDead .6s steps(3) forwards!important}
+.anim-enemy-dead{animation:enemyDead .6s ease-out forwards!important}
 @keyframes enemyDead{
   0%{transform:scaleX(-1) scale(1);opacity:1}
   30%{transform:scaleX(-1) scale(1.3) rotate(20deg);opacity:.8}
   60%{transform:scaleX(-1) scale(.8) rotate(40deg);opacity:.4}
   100%{transform:scaleX(-1) scale(0) rotate(60deg);opacity:0}
 }
-.anim-enemy-attack{animation:enemyAttack .5s steps(2) forwards!important}
+.anim-enemy-attack{animation:enemyAttack .5s ease-out forwards!important}
 @keyframes enemyAttack{
   0%{transform:scaleX(-1) translateX(0)}
   40%{transform:scaleX(-1) translateX(-20px) translateY(10px) scale(1.08)}
@@ -597,7 +597,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 .impact{
   position:fixed;z-index:210;pointer-events:none;
   transform:translate(-50%,-50%);
-  animation:impactPx .5s steps(3) forwards;
+  animation:impactPx .5s ease-out forwards;
 }
 @keyframes impactPx{
   0%{transform:translate(-50%,-50%) scale(0);opacity:1}
@@ -609,7 +609,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 .impact-stars{
   position:fixed;z-index:211;pointer-events:none;
   font-size:20px;
-  animation:starBurst .6s steps(3) forwards;
+  animation:starBurst .6s ease-out forwards;
 }
 @keyframes starBurst{0%{transform:translate(-50%,-50%) scale(0) rotate(0);opacity:1}100%{transform:translate(-50%,-50%) scale(1.5) rotate(var(--rot));opacity:0}}
 
@@ -626,7 +626,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 ═══════════════════════════════ */
 .s-flash{
   position:fixed;inset:0;z-index:250;pointer-events:none;
-  animation:sfPx .25s steps(3) forwards;
+  animation:sfPx .25s ease-out forwards;
 }
 @keyframes sfPx{0%{opacity:.8}100%{opacity:0}}
 
@@ -635,11 +635,11 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 ═══════════════════════════════ */
 .dmg-num{
   position:fixed;z-index:220;pointer-events:none;
-  font-family:'Press Start 2P',monospace;
+  font-family:'Baloo 2','Nunito',sans-serif;
   font-size:clamp(16px,5vw,24px);
   transform:translate(-50%,-50%);
   text-shadow:2px 2px 0 #000;
-  animation:dmgPx .9s steps(4) forwards;
+  animation:dmgPx .9s ease-out forwards;
 }
 @keyframes dmgPx{
   0%{transform:translate(-50%,-50%) scale(1.5);opacity:1}
@@ -652,16 +652,16 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 .j-banner{
   position:absolute;top:28%;left:50%;
   z-index:80;pointer-events:none;
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(10px,2.8vw,15px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(14px,2.8vw,15px);
   letter-spacing:2px;
   padding:8px 16px;
   background:#000;
   border:3px solid;
   display:none;
   white-space:nowrap;
-  animation:jBannerPx .9s steps(4) forwards;
-  box-shadow:4px 4px 0 rgba(0,0,0,.8);
+  animation:jBannerPx .9s ease-out forwards;
+  box-shadow:0 4px 10px rgba(0,0,0,.35);
 }
 @keyframes jBannerPx{
   0%{transform:translateX(-50%) scaleX(0);opacity:0}
@@ -675,11 +675,11 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 ═══════════════════════════════ */
 .combo{
   position:fixed;top:38%;left:50%;z-index:230;pointer-events:none;
-  font-family:'Press Start 2P',monospace;
+  font-family:'Baloo 2','Nunito',sans-serif;
   font-size:clamp(14px,4vw,22px);
   letter-spacing:2px;white-space:nowrap;
   text-shadow:3px 3px 0 #000;
-  animation:comboPx .8s steps(4) forwards;
+  animation:comboPx .8s ease-out forwards;
 }
 @keyframes comboPx{
   0%{transform:translate(-50%,-50%) scale(.3);opacity:0}
@@ -694,9 +694,9 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 .q-overlay{
   position:absolute;bottom:0;left:0;right:0;z-index:50;
   background:linear-gradient(180deg,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,10,.85) 14%,
-    rgba(0,0,10,.97) 100%);
+    rgba(13,16,44,0) 0%,
+    rgba(13,16,44,.88) 14%,
+    rgba(16,20,54,.97) 100%);
   padding:6px 12px 10px;
   transform:translateY(100%);
   transition:transform .4s cubic-bezier(.34,1.1,.64,1);
@@ -705,41 +705,47 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 
 .q-tag{
   text-align:center;margin-bottom:5px;
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(8px,2.3vw,12px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(12px,2.3vw,12px);
   color:#FFD600;
   text-shadow:2px 2px 0 #8B7200,0 0 10px #FFD600;
   letter-spacing:1px;
 }
 .q-math{
   text-align:center;
-  font-family:'Press Start 2P',monospace;
+  font-family:'Baloo 2','Nunito',sans-serif;
   font-size:clamp(22px,7vw,46px);
   color:#fff;line-height:1.2;margin-bottom:8px;
   text-shadow:3px 3px 0 #333;
 }
-.q-math.glow{animation:mathGlowPx .5s steps(2) infinite alternate}
+.q-math.glow{animation:mathGlowPx .5s ease-out infinite alternate}
 @keyframes mathGlowPx{from{text-shadow:3px 3px 0 #333}to{text-shadow:3px 3px 0 #8B7200,0 0 20px #FFD600,0 0 40px rgba(255,214,0,.5)}}
 
 .ans-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
 .ab{
-  padding:clamp(10px,3.5vw,16px) 6px;
-  border:3px solid rgba(255,255,255,.2);
+  padding:clamp(12px,3.5vw,18px) 6px;
+  border:none;border-radius:18px;
   cursor:pointer;
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(20px,6.5vw,36px);
-  color:#fff;background:rgba(0,0,0,.5);
-  transition:transform .1s,border-color .15s,background .15s;
-  box-shadow:4px 4px 0 rgba(0,0,0,.6);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-weight:800;
+  font-size:clamp(24px,7vw,40px);
+  color:#fff;
+  text-shadow:0 2px 0 rgba(0,0,0,.25);
+  box-shadow:0 5px 0 rgba(0,0,0,.28);
+  transition:transform .12s,filter .15s;
   position:relative;
 }
-.ab:hover{transform:translate(-2px,-2px);border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.1)}
-.ab:active{transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(0,0,0,.6)}
-.ab.correct{background:rgba(0,200,100,.25);border-color:#00E676;color:#00E676;animation:abCorrectPx .3s steps(2)}
-.ab.wrong{background:rgba(220,0,0,.25);border-color:#FF1744;color:#FF4444;animation:abWrongPx .35s steps(2)}
+#ab0{background:linear-gradient(160deg,#FF6B6B,#D93030)}
+#ab1{background:linear-gradient(160deg,#4D9FFF,#1565C0)}
+#ab2{background:linear-gradient(160deg,#FFC93C,#F0930B)}
+#ab3{background:linear-gradient(160deg,#5FD068,#2E8B3A)}
+.ab:hover{transform:translateY(-3px) scale(1.02);filter:brightness(1.1)}
+.ab:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.28)}
+.ab.correct{animation:abBounce .55s cubic-bezier(.34,1.56,.64,1);outline:4px solid #fff;filter:brightness(1.18) saturate(1.2)}
+.ab.wrong{animation:abWrongPx .38s ease;filter:grayscale(.75) brightness(.55)}
 .ab.elim{opacity:.15;pointer-events:none}
-@keyframes abCorrectPx{0%,100%{transform:translate(0,0)}50%{transform:translate(-3px,-3px)}}
-@keyframes abWrongPx{0%,100%{transform:translate(0,0)}25%{transform:translate(-6px,0)}75%{transform:translate(6px,0)}}
+@keyframes abBounce{0%{transform:scale(1)}40%{transform:scale(1.13)}100%{transform:scale(1)}}
+@keyframes abWrongPx{0%,100%{transform:translate(0,0)}25%{transform:translate(-7px,0)}75%{transform:translate(7px,0)}}
 .ab:disabled{cursor:not-allowed}
 
 /* ═══════════════════════════════
@@ -754,11 +760,11 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 }
 .jutsu-panel.show{display:flex}
 .jutsu-lbl{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(10px,2.8vw,14px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(14px,2.8vw,14px);
   color:#FFD600;letter-spacing:2px;
   text-shadow:2px 2px 0 #8B7200,0 0 12px #FFD600;
-  animation:jutsuLblPx .5s steps(2) infinite alternate;
+  animation:jutsuLblPx .5s ease-out infinite alternate;
 }
 @keyframes jutsuLblPx{from{opacity:.7}to{opacity:1}}
 
@@ -769,21 +775,21 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 .j-btn{
   flex:1;min-width:120px;max-width:160px;
   padding:12px 8px;
-  border:3px solid;
+  border:3px solid;border-radius:18px;
   cursor:pointer;
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(9px,2.5vw,12px);
-  color:#fff;background:#000;
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(13px,2.5vw,12px);
+  color:#fff;background:rgba(10,12,40,.92);
   transition:transform .12s;
-  box-shadow:4px 4px 0 rgba(0,0,0,.8);
+  box-shadow:0 4px 10px rgba(0,0,0,.35);
   display:flex;flex-direction:column;
   align-items:center;gap:6px;
   line-height:1.5;
 }
 .j-btn .j-icon{font-size:clamp(24px,6vw,36px);display:block}
-.j-btn .j-dmg{font-size:8px;color:#FFD600}
-.j-btn:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 rgba(0,0,0,.8)}
-.j-btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 rgba(0,0,0,.8)}
+.j-btn .j-dmg{font-size:11px;color:#FFD600}
+.j-btn:hover{transform:translate(-3px,-3px);box-shadow:0 7px 14px rgba(0,0,0,.4)}
+.j-btn:active{transform:translate(3px,3px);box-shadow:0 1px 3px rgba(0,0,0,.4)}
 
 /* ═══════════════════════════════
    LEVEL UP
@@ -792,18 +798,18 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   position:fixed;inset:0;z-index:280;pointer-events:none;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   background:rgba(0,0,0,.3);
-  animation:lvFadePx 2.2s steps(6) forwards;
+  animation:lvFadePx 2.2s ease forwards;
 }
 @keyframes lvFadePx{0%{opacity:0}12%{opacity:1}80%{opacity:1}100%{opacity:0}}
 .lvlup-t{
-  font-family:'Press Start 2P',monospace;
+  font-family:'Baloo 2','Nunito',sans-serif;
   font-size:clamp(28px,8vw,52px);
   color:#FFD600;
   text-shadow:4px 4px 0 #8B7200,0 0 30px #FFD600;
   margin-bottom:10px;
 }
 .lvlup-s{
-  font-family:'Press Start 2P',monospace;
+  font-family:'Baloo 2','Nunito',sans-serif;
   font-size:clamp(14px,4vw,22px);
   color:#FF6B00;
   text-shadow:3px 3px 0 #8B3A00;
@@ -814,10 +820,10 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 ═══════════════════════════════ */
 #s-win{background:radial-gradient(ellipse at 50% 30%,#0d2a0d 0%,#020802 70%);padding:20px;text-align:center}
 #s-lose{background:radial-gradient(ellipse at 50% 30%,#2a0d0d 0%,#080202 70%);padding:20px;text-align:center}
-.r-emo{font-size:clamp(60px,16vw,100px);animation:rPopPx .7s steps(4);margin-bottom:10px}
+.r-emo{font-size:clamp(60px,16vw,100px);animation:rPopPx .7s ease-out;margin-bottom:10px}
 @keyframes rPopPx{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
 .r-title{
-  font-family:'Press Start 2P',monospace;
+  font-family:'Baloo 2','Nunito',sans-serif;
   font-size:clamp(22px,7vw,46px);
   letter-spacing:2px;margin-bottom:8px;
   text-shadow:4px 4px 0 rgba(0,0,0,.8);
@@ -825,31 +831,31 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 #s-win .r-title{color:#FFD600}
 #s-lose .r-title{color:#FF1744}
 .r-msg{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(7px,2vw,10px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(11px,2vw,10px);
   color:#aaa;margin-bottom:16px;
   line-height:1.8;letter-spacing:1px;
 }
 .r-stats{display:flex;gap:10px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
 .r-stat{
-  background:#000;border:3px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.06);border:3px solid rgba(255,255,255,.2);border-radius:16px;
   padding:10px 16px;text-align:center;
-  box-shadow:4px 4px 0 rgba(0,0,0,.8);
+  box-shadow:0 4px 10px rgba(0,0,0,.35);
 }
-.r-num{font-family:'Press Start 2P',monospace;font-size:clamp(18px,5vw,28px);color:#FFD600}
+.r-num{font-family:'Baloo 2','Nunito',sans-serif;font-size:clamp(18px,5vw,28px);color:#FFD600}
 #s-lose .r-num{color:#FF1744}
-.r-lbl{font-family:'Press Start 2P',monospace;font-size:8px;color:#666;margin-top:4px}
+.r-lbl{font-family:'Baloo 2','Nunito',sans-serif;font-size:11px;color:#666;margin-top:4px}
 .r-btns{display:flex;flex-direction:column;gap:10px;width:100%;max-width:280px;margin:0 auto}
 .rbtn{
-  padding:14px;border:3px solid;cursor:pointer;
-  font-family:'Press Start 2P',monospace;
+  padding:14px;border:3px solid;border-radius:16px;cursor:pointer;
+  font-family:'Baloo 2','Nunito',sans-serif;
   font-size:clamp(11px,3vw,14px);
   letter-spacing:1px;
-  color:#fff;background:#000;
+  color:#fff;background:rgba(10,12,40,.92);
   transition:transform .12s;
-  box-shadow:4px 4px 0 rgba(0,0,0,.8);
+  box-shadow:0 4px 10px rgba(0,0,0,.35);
 }
-.rbtn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(0,0,0,.8)}
+.rbtn:hover{transform:translate(-2px,-2px);box-shadow:0 6px 12px rgba(0,0,0,.4)}
 .rbtn:active{transform:translate(3px,3px);box-shadow:1px 1px 0}
 .rbtn-a{border-color:#FFD600;color:#FFD600}
 .rbtn-b{border-color:#aaa;color:#aaa}
@@ -924,7 +930,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 /* Hero body glow during pre-attack */
 .hero-sprite-outer.pre-attack{
   filter:brightness(1.5) drop-shadow(0 0 12px var(--aura-color,gold)) drop-shadow(0 0 28px var(--aura-color,gold));
-  animation:preAttackBody .35s steps(1) infinite;
+  animation:preAttackBody .35s ease-in-out infinite;
 }
 @keyframes preAttackBody{
   0%,100%{filter:brightness(1.6) drop-shadow(0 0 12px var(--aura-color,gold)) drop-shadow(0 0 28px var(--aura-color,gold))}
@@ -954,15 +960,15 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 @keyframes mStarTwink{0%,100%{opacity:.15}50%{opacity:.85}}
 
 .map-title{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(10px,2.8vw,15px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(14px,2.8vw,15px);
   color:#FFD600;letter-spacing:2px;
   text-shadow:0 0 12px #FFD600,2px 2px 0 #8B7200;
   margin-bottom:10px;text-align:center;
 }
 .map-hero-tag{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(8px,2vw,11px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(12px,2vw,11px);
   color:#aaa;letter-spacing:1px;
   margin-bottom:12px;
 }
@@ -982,11 +988,11 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   display:flex;flex-direction:column;align-items:center;
 }
 .zone-title{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(8px,2.2vw,11px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(12px,2.2vw,11px);
   letter-spacing:1px;text-transform:uppercase;
-  padding:4px 14px;margin-bottom:4px;
-  border:2px solid;text-align:center;
+  padding:4px 16px;margin-bottom:6px;
+  border:2px solid;border-radius:999px;text-align:center;
 }
 
 /* Level node */
@@ -994,7 +1000,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   display:flex;align-items:center;gap:8px;
   width:100%;padding:6px 8px;
   border:2px solid rgba(255,255,255,.12);
-  border-radius:0;margin-bottom:2px;
+  border-radius:14px;margin-bottom:4px;
   cursor:pointer;position:relative;
   transition:background .15s,border-color .15s;
   background:rgba(255,255,255,.04);
@@ -1022,8 +1028,8 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 }
 
 .lv-num{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(10px,3vw,14px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(14px,3vw,14px);
   width:28px;text-align:center;flex-shrink:0;
 }
 .lv-node.active .lv-num{color:#FFD600}
@@ -1032,19 +1038,19 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 
 .lv-info{flex:1}
 .lv-name{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(7px,2vw,10px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(11px,2vw,10px);
   color:#fff;letter-spacing:.5px;margin-bottom:3px;
 }
 .lv-node.locked .lv-name{color:#555}
 .lv-detail{
-  font-family:'Press Start 2P',monospace;
-  font-size:6px;color:#888;letter-spacing:.5px;
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:10px;color:#888;letter-spacing:.5px;
 }
 .lv-badge{
-  font-family:'Press Start 2P',monospace;
-  font-size:8px;
-  padding:3px 7px;border:1px solid;
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:11px;
+  padding:3px 9px;border:1px solid;border-radius:9px;
   flex-shrink:0;
 }
 .badge-done{color:#00E676;border-color:#00E676;background:rgba(0,230,118,.1)}
@@ -1079,24 +1085,24 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 
 /* Play button */
 .map-play-btn{
-  font-family:'Press Start 2P',monospace;
+  font-family:'Baloo 2','Nunito',sans-serif;
   font-size:clamp(11px,3vw,15px);letter-spacing:2px;
-  padding:12px 28px;
-  border:3px solid #FFD600;
-  background:#000;color:#FFD600;
+  padding:12px 32px;
+  border:3px solid #FFD600;border-radius:999px;
+  background:rgba(10,12,40,.92);color:#FFD600;
   cursor:pointer;
-  box-shadow:4px 4px 0 #8B7200,0 0 20px rgba(255,214,0,.3);
+  box-shadow:0 4px 10px rgba(139,114,0,.55),0 0 20px rgba(255,214,0,.3);
   transition:transform .12s;
   margin-top:8px;flex-shrink:0;
 }
-.map-play-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #8B7200}
-.map-play-btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #8B7200}
+.map-play-btn:hover{transform:translate(-2px,-2px);box-shadow:0 6px 14px rgba(139,114,0,.6)}
+.map-play-btn:active{transform:translate(2px,2px);box-shadow:0 2px 6px rgba(139,114,0,.55)}
 .map-back-btn{
-  font-family:'Press Start 2P',monospace;
-  font-size:9px;letter-spacing:1px;
-  padding:6px 14px;
-  border:2px solid #555;
-  background:#000;color:#777;
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:12px;letter-spacing:1px;
+  padding:6px 16px;
+  border:2px solid #666;border-radius:999px;
+  background:rgba(10,12,40,.9);color:#999;
   cursor:pointer;margin-top:6px;flex-shrink:0;
 }
 .map-back-btn:hover{border-color:#aaa;color:#aaa}
@@ -1110,16 +1116,16 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   pointer-events:none;
 }
 .jt-text{
-  font-family:'Press Start 2P',monospace;
+  font-family:'Baloo 2','Nunito',sans-serif;
   font-size:clamp(12px,4vw,20px);
   color:#FFD600;letter-spacing:2px;text-align:center;
   text-shadow:0 0 20px #FFD600;
-  animation:jtFlicker .15s steps(1) infinite;
+  animation:jtFlicker .15s ease-in-out infinite;
 }
 @keyframes jtFlicker{0%,100%{opacity:1}50%{opacity:.4}}
 .jt-sub{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(8px,2.5vw,12px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(12px,2.5vw,12px);
   color:#FF6B00;letter-spacing:1px;margin-top:8px;
   text-align:center;
 }
@@ -1185,7 +1191,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 }
 @keyframes starRevealFade{0%{opacity:0}10%{opacity:1}82%{opacity:1}100%{opacity:0}}
 .sr-title{
-  font-family:'Press Start 2P',monospace;
+  font-family:'Baloo 2','Nunito',sans-serif;
   font-size:clamp(16px,5vw,28px);
   color:#FFD600;letter-spacing:2px;
   text-shadow:0 0 24px #FFD600,3px 3px 0 #8B7200;
@@ -1205,11 +1211,72 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 }
 @keyframes srStarDim{to{opacity:.4;transform:scale(.85) rotate(0)}}
 .sr-msg{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(8px,2.5vw,12px);
+  font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(12px,2.5vw,12px);
   color:#aaa;margin-top:16px;letter-spacing:1px;
 }
 @keyframes tutBob{from{transform:translateX(-50%) translateY(0)}to{transform:translateX(-50%) translateY(-6px)}}
+
+/* ═══════════════════════════════
+   LIVING CARTOON CHARACTERS (SVG)
+═══════════════════════════════ */
+.ch-slot{display:block}
+.ch-slot-hero{width:136px;height:170px}
+.ch-slot-enemy{width:165px;height:177px}
+.ch-slot svg,.prev-slot svg{width:100%;height:100%;display:block;overflow:visible}
+.prev-slot{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.ch{overflow:visible;filter:drop-shadow(0 5px 5px rgba(0,0,0,.22))}
+.ch *{transform-box:fill-box;transform-origin:center}
+.ch .ch-root{transform-origin:center bottom}
+/* Idle life: breathing, head bob, arm sway, blinking */
+.ch .ch-torso{transform-origin:center bottom;animation:chBreathe 2.6s ease-in-out infinite}
+.ch .ch-head{transform-origin:center bottom;animation:chHeadBob 2.6s ease-in-out infinite}
+.ch .ch-arm-l{transform-origin:top center;animation:chArmL 2.6s ease-in-out infinite}
+.ch .ch-arm-r{transform-origin:top center;animation:chArmR 2.6s ease-in-out infinite}
+.ch .ch-eye{animation:chBlink 4.4s infinite}
+.ch .sn-tongue{transform-origin:top center;animation:snTongue 3.2s ease-in-out infinite}
+.ch .en-glow{animation:enGlow 1.8s ease-in-out infinite}
+@keyframes chBreathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.05)}}
+@keyframes chHeadBob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-2.5px) rotate(-1.6deg)}}
+@keyframes chArmL{0%,100%{transform:rotate(5deg)}50%{transform:rotate(-7deg)}}
+@keyframes chArmR{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(7deg)}}
+@keyframes chBlink{0%,90.5%,100%{transform:scaleY(1)}93%,96%{transform:scaleY(.07)}}
+@keyframes snTongue{0%,78%,100%{transform:scaleY(0);opacity:0}82%,92%{transform:scaleY(1);opacity:1}}
+@keyframes enGlow{0%,100%{filter:drop-shadow(0 0 2px #FF1744)}50%{filter:drop-shadow(0 0 8px #FF1744)}}
+
+/* ── Pose: CHARGE — lean back, arms pumping ── */
+.anim-charge .ch-root{animation:chLean .45s ease-in-out infinite alternate}
+.anim-charge .ch-arm-l{animation:chPumpL .45s ease-in-out infinite alternate}
+.anim-charge .ch-arm-r{animation:chPumpR .45s ease-in-out infinite alternate}
+@keyframes chLean{from{transform:rotate(-2deg)}to{transform:rotate(-5deg) translateY(2px)}}
+@keyframes chPumpL{from{transform:rotate(18deg)}to{transform:rotate(34deg)}}
+@keyframes chPumpR{from{transform:rotate(-18deg)}to{transform:rotate(-34deg)}}
+
+/* ── Pose: ATTACK — arm thrust + determined face ── */
+.anim-attack .ch-arm-r{animation:chPunch .5s cubic-bezier(.34,1.56,.64,1) forwards}
+.anim-attack .ch-head{animation:chAtkHead .5s ease-out forwards}
+@keyframes chPunch{0%{transform:rotate(0)}45%{transform:rotate(-160deg)}100%{transform:rotate(-140deg)}}
+@keyframes chAtkHead{0%{transform:rotate(0)}40%{transform:rotate(6deg) translateX(3px)}100%{transform:rotate(3deg)}}
+
+/* ── Pose: HURT — ouch face, eyes squeeze ── */
+.anim-hurt .ch-m-idle{opacity:0}
+.anim-hurt .ch-m-hurt{opacity:1}
+.anim-hurt .ch-eye{animation:none;transform:scaleY(.22)}
+.anim-hurt .ch-head{animation:chHurtHead .4s ease-out}
+@keyframes chHurtHead{0%,100%{transform:rotate(0)}30%{transform:rotate(-8deg) translateY(2px)}70%{transform:rotate(5deg)}}
+
+/* ── Pose: VICTORY — big smile, arms up cheering ── */
+.anim-victory .ch-m-idle{opacity:0}
+.anim-victory .ch-m-joy{opacity:1}
+.anim-victory .ch-arm-l{animation:chCheerL .55s ease-in-out infinite alternate}
+.anim-victory .ch-arm-r{animation:chCheerR .55s ease-in-out infinite alternate}
+.anim-victory .ch-eye{animation:chBlink 1.6s infinite}
+@keyframes chCheerL{from{transform:rotate(150deg)}to{transform:rotate(170deg)}}
+@keyframes chCheerR{from{transform:rotate(-150deg)}to{transform:rotate(-170deg)}}
+
+/* Enemy hurt/dead facial reactions */
+.anim-enemy-hit .ch-eye{animation:none;transform:scaleY(.2)}
+.anim-enemy-hit .ch-m-idle{opacity:0}
 </style>
 </head>
 <body>
@@ -1219,27 +1286,27 @@ body{font-family:'Nunito',sans-serif;color:#fff}
   <div class="logo">
     <div class="logo-t1">HERO MATH</div>
     <div class="logo-t2">⚡ BATTLE ⚡</div>
-    <div class="logo-sub">PIXEL EDITION</div>
+    <div class="logo-sub">MATH ADVENTURE</div>
   </div>
   <div class="pick-lbl">— CHOOSE HERO —</div>
   <div class="hero-row">
     <div class="hcard" data-h="ninja" onclick="pickHero(this)">
       <div class="h-preview">
-        <canvas id="prev-ninja" width="128" height="192"></canvas>
+        <div id="prev-ninja" class="prev-slot"></div>
       </div>
       <div class="h-name">NINJA</div>
       <div class="h-sub">Vortex Blast<br>Shuriken<br>Sword Dash</div>
     </div>
     <div class="hcard" data-h="saiyan" onclick="pickHero(this)">
       <div class="h-preview">
-        <canvas id="prev-saiyan" width="128" height="192"></canvas>
+        <div id="prev-saiyan" class="prev-slot"></div>
       </div>
       <div class="h-name">COSMIC HERO</div>
       <div class="h-sub">Cosmic Wave<br>Star Bolt<br>Galaxy Orb</div>
     </div>
     <div class="hcard" data-h="spider" onclick="pickHero(this)">
       <div class="h-preview">
-        <canvas id="prev-spider" width="128" height="192"></canvas>
+        <div id="prev-spider" class="prev-slot"></div>
       </div>
       <div class="h-name">WEB RANGER</div>
       <div class="h-sub">Web Shot<br>Ranger Kick<br>Web Slam</div>
@@ -1269,16 +1336,13 @@ body{font-family:'Nunito',sans-serif;color:#fff}
         </div>
         <div class="hud-side hud-right">
           <div class="f-name h-col" id="hName">HERO</div>
-          <div class="hp-wrap hp-h">
-            <div class="hp-fill" id="hHpFill" style="width:100%"></div>
-            <div class="hp-num" id="hHpNum">5</div>
-          </div>
+          <div class="hearts" id="heroHearts">❤️❤️❤️❤️❤️</div>
         </div>
       </div>
       <!-- Enemy -->
       <div class="enemy-wrap" id="enemyWrap">
         <div class="enemy-sprite-outer anim-enemy-idle" id="enemyOuter">
-          <canvas id="enemyCanvas" width="150" height="192" style="image-rendering:pixelated;display:block"></canvas>
+          <div id="enemyCanvas" class="ch-slot ch-slot-enemy"></div>
         </div>
         <div class="fighter-shadow"></div>
       </div>
@@ -1291,7 +1355,7 @@ body{font-family:'Nunito',sans-serif;color:#fff}
       <!-- Hero -->
       <div class="hero-wrap" id="heroWrap">
         <div class="hero-sprite-outer anim-idle" id="heroOuter">
-          <canvas id="heroCanvas" width="128" height="192" style="image-rendering:pixelated;display:block"></canvas>
+          <div id="heroCanvas" class="ch-slot ch-slot-hero"></div>
         </div>
         <div class="fighter-shadow"></div>
       </div>
@@ -1362,311 +1426,184 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 
 <script>
 /* ═══════════════════════════════════════════
-   PIXEL ART DRAWING ENGINE
-   drawPixels(ctx, scale, pixels)
-   pixels = [[x,y,color], ...]
+   CARTOON CHARACTER ENGINE
+   Smooth SVG chibi sprites with living parts:
+   .ch-torso breathes, .ch-eye blinks, .ch-head
+   bobs, arms sway; pose classes override parts.
 ═══════════════════════════════════════════ */
-const S=8; // pixel scale — bigger sprites
 
-function drawPx(ctx,pixels){
-  ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-  pixels.forEach(([x,y,c])=>{
-    ctx.fillStyle=c;
-    ctx.fillRect(x*S,y*S,S,S);
-  });
+function heroSVG(kind){
+  if(kind==='ninja') return ninjaSVG();
+  if(kind==='saiyan') return cosmicSVG();
+  return rangerSVG();
 }
 
-/* ═══════════════════════════════════════════
-   SPRITE DEFINITIONS
-   Each character has frames: idle[], attack[], hurt[]
-═══════════════════════════════════════════ */
+/* Shared chibi body helper — torso/arms/legs in outfit colors.
+   headInner = markup drawn on top of the bare head circle. */
+function chibiBody(o){
+  return `
+  <g class="ch-legs">
+    <rect x="44" y="112" width="13" height="26" rx="6.5" fill="${o.pants}"/>
+    <rect x="63" y="112" width="13" height="26" rx="6.5" fill="${o.pants}"/>
+    <ellipse cx="50" cy="139" rx="11" ry="6.5" fill="${o.shoes}"/>
+    <ellipse cx="70" cy="139" rx="11" ry="6.5" fill="${o.shoes}"/>
+  </g>
+  <g class="ch-arm ch-arm-l">
+    <rect x="24" y="82" width="13" height="32" rx="6.5" fill="${o.suit}"/>
+    <circle cx="30.5" cy="114" r="7.5" fill="${o.hands}"/>
+  </g>
+  <g class="ch-arm ch-arm-r">
+    <rect x="83" y="82" width="13" height="32" rx="6.5" fill="${o.suit}"/>
+    <circle cx="89.5" cy="114" r="7.5" fill="${o.hands}"/>
+  </g>
+  <g class="ch-torso">
+    <rect x="37" y="76" width="46" height="42" rx="15" fill="${o.suit}"/>
+    ${o.chest||''}
+    <rect x="37" y="98" width="46" height="9" rx="4.5" fill="${o.belt}"/>
+  </g>`;
+}
 
-// ── NINJA (orange jumpsuit, crimson spiky hair, headband)
-const NINJA_IDLE_F1=[
-  // Hair spikes (crimson red)
-  [6,0,'#D8281A'],[7,0,'#D8281A'],[8,0,'#D8281A'],[9,0,'#D8281A'],
-  [5,1,'#D8281A'],[6,1,'#D8281A'],[7,1,'#A81C10'],[8,1,'#D8281A'],[9,1,'#D8281A'],[10,1,'#D8281A'],
-  [5,2,'#D8281A'],[6,2,'#D8281A'],[7,2,'#D8281A'],[8,2,'#D8281A'],[9,2,'#D8281A'],[10,2,'#D8281A'],
-  // Headband (dark teal with metal plate)
-  [5,3,'#0F5C4A'],[6,3,'#0F5C4A'],[7,3,'#888'],[8,3,'#888'],[9,3,'#888'],[10,3,'#0F5C4A'],[11,3,'#0F5C4A'],
-  // Face (skin)
-  [6,4,'#FFCC99'],[7,4,'#FFCC99'],[8,4,'#FFCC99'],[9,4,'#FFCC99'],[10,4,'#FFCC99'],
-  // Eyes
-  [7,4,'#1a6aFF'],[9,4,'#1a6aFF'],
-  // Mouth
-  [8,5,'#FF8888'],
-  // Face lower
-  [6,5,'#FFCC99'],[7,5,'#FFCC99'],[8,5,'#FFCC99'],[9,5,'#FFCC99'],[10,5,'#FFCC99'],
-  // Neck
-  [7,6,'#FFCC99'],[8,6,'#FFCC99'],[9,6,'#FFCC99'],
-  // Collar (orange)
-  [6,6,'#FF6B00'],[10,6,'#FF6B00'],
-  // Body (orange jumpsuit)
-  [5,7,'#FF6B00'],[6,7,'#FF6B00'],[7,7,'#FF6B00'],[8,7,'#FF6B00'],[9,7,'#FF6B00'],[10,7,'#FF6B00'],[11,7,'#FF6B00'],
-  [5,8,'#FF6B00'],[6,8,'#FF6B00'],[7,8,'#FF6B00'],[8,8,'#FF5500'],[9,8,'#FF6B00'],[10,8,'#FF6B00'],[11,8,'#FF6B00'],
-  [5,9,'#FF6B00'],[6,9,'#FF6B00'],[7,9,'#FF6B00'],[8,9,'#FF6B00'],[9,9,'#FF6B00'],[10,9,'#FF6B00'],[11,9,'#FF6B00'],
-  // Belt/pouch
-  [6,10,'#333'],[7,10,'#333'],[8,10,'#555'],[9,10,'#333'],[10,10,'#333'],
-  // Arms
-  [4,7,'#FF6B00'],[4,8,'#FF6B00'],[4,9,'#FFCC99'],[4,10,'#FFCC99'],
-  [12,7,'#FF6B00'],[12,8,'#FF6B00'],[12,9,'#FFCC99'],[12,10,'#FFCC99'],
-  // Legs (orange)
-  [6,11,'#FF6B00'],[7,11,'#FF6B00'],[9,11,'#FF6B00'],[10,11,'#FF6B00'],
-  [6,12,'#FF6B00'],[7,12,'#FF6B00'],[9,12,'#FF6B00'],[10,12,'#FF6B00'],
-  [6,13,'#FF6B00'],[7,13,'#FF6B00'],[9,13,'#FF6B00'],[10,13,'#FF6B00'],
-  // Sandals (blue/dark)
-  [5,14,'#1E5080'],[6,14,'#1E5080'],[7,14,'#1E5080'],[9,14,'#1E5080'],[10,14,'#1E5080'],[11,14,'#1E5080'],
-];
-const NINJA_IDLE_F2=NINJA_IDLE_F1.map(([x,y,c])=>[x,y+1,c]); // slight float up
+/* Cute face: big white eyes + pupils + shine, blush, 3 mouth states */
+function chibiFace(o){
+  return `
+  <g class="ch-eye"><circle cx="47" cy="50" r="7.5" fill="#fff"/><circle cx="48" cy="51.4" r="3.8" fill="${o.eyes}"/><circle cx="49.6" cy="49.6" r="1.4" fill="#fff"/></g>
+  <g class="ch-eye"><circle cx="73" cy="50" r="7.5" fill="#fff"/><circle cx="74" cy="51.4" r="3.8" fill="${o.eyes}"/><circle cx="75.6" cy="49.6" r="1.4" fill="#fff"/></g>
+  <circle cx="38" cy="60" r="4.5" fill="#FF8A80" opacity=".45"/>
+  <circle cx="82" cy="60" r="4.5" fill="#FF8A80" opacity=".45"/>
+  <path class="ch-m ch-m-idle" d="M53 63 Q60 69 67 63" stroke="${o.mouth}" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path class="ch-m ch-m-hurt" d="M53 68 Q60 61 67 68" stroke="${o.mouth}" stroke-width="3" fill="none" stroke-linecap="round" opacity="0"/>
+  <g class="ch-m ch-m-joy" opacity="0"><path d="M51 62 Q60 74 69 62 Z" fill="#7A3B20"/><path d="M55 68 Q60 71 65 68 Z" fill="#FF8A80"/></g>`;
+}
 
-const NINJA_ATTACK_F1=[
-  // Hair (wild/windswept)
-  [7,0,'#D8281A'],[8,0,'#D8281A'],[9,0,'#D8281A'],[10,0,'#D8281A'],[11,0,'#D8281A'],
-  [6,1,'#D8281A'],[7,1,'#D8281A'],[8,1,'#D8281A'],[9,1,'#D8281A'],[10,1,'#D8281A'],
-  [6,2,'#D8281A'],[7,2,'#D8281A'],[8,2,'#D8281A'],[9,2,'#D8281A'],
-  [5,3,'#0F5C4A'],[6,3,'#0F5C4A'],[7,3,'#888'],[8,3,'#888'],[9,3,'#888'],[10,3,'#0F5C4A'],
-  [6,4,'#FFCC99'],[7,4,'#FFCC99'],[8,4,'#FFCC99'],[9,4,'#FFCC99'],[10,4,'#FFCC99'],
-  [7,4,'#1a6aFF'],[9,4,'#1a6aFF'],
-  [6,5,'#FFCC99'],[7,5,'#FFCC99'],[8,5,'#FFCC99'],[9,5,'#FFCC99'],[10,5,'#FFCC99'],
-  [7,6,'#FFCC99'],[8,6,'#FFCC99'],
-  // Body leaning forward
-  [5,6,'#FF6B00'],[6,6,'#FF6B00'],[7,6,'#FF6B00'],[8,6,'#FF6B00'],[9,6,'#FF6B00'],
-  [4,7,'#FF6B00'],[5,7,'#FF6B00'],[6,7,'#FF6B00'],[7,7,'#FF6B00'],[8,7,'#FF6B00'],[9,7,'#FF6B00'],
-  [4,8,'#FF6B00'],[5,8,'#FF6B00'],[6,8,'#FF6B00'],[7,8,'#FF5500'],[8,8,'#FF6B00'],[9,8,'#FF6B00'],
-  [5,9,'#333'],[6,9,'#333'],[7,9,'#555'],[8,9,'#333'],
-  // Punching arm extended
-  [3,6,'#FFCC99'],[2,6,'#FFCC99'],[1,6,'#FFCC99'],[0,6,'#FFCC99'],
-  [3,7,'#FFCC99'],[2,7,'#FFCC99'],
-  // Rasengan swirl at fist
-  [0,5,'#4fc3f7'],[1,5,'#0288d1'],[0,6,'#4fc3f7'],[1,6,'#0288d1'],
-  // Legs crouched
-  [5,10,'#FF6B00'],[6,10,'#FF6B00'],[7,10,'#FF6B00'],[8,10,'#FF6B00'],
-  [4,11,'#FF6B00'],[5,11,'#FF6B00'],[8,11,'#FF6B00'],[9,11,'#FF6B00'],
-  [4,12,'#1E5080'],[5,12,'#1E5080'],[8,12,'#1E5080'],[9,12,'#1E5080'],
-];
+function ninjaSVG(){
+  const skin='#FFCC99';
+  return `<svg class="ch" viewBox="0 0 120 150">
+  <g class="ch-root">
+    ${chibiBody({suit:'#FF7A00',pants:'#37474F',shoes:'#00897B',hands:skin,belt:'#E65100',
+      chest:'<path d="M47 78 L60 96 L73 78" stroke="#E65100" stroke-width="5" fill="none" stroke-linecap="round"/>'})}
+    <g class="ch-head">
+      <circle cx="60" cy="46" r="30" fill="${skin}"/>
+      <path d="M31 42 Q26 20 40 15 Q44 3 58 8 Q66 0 76 9 Q90 8 88 24 Q96 32 89 42 Q78 26 60 27 Q42 26 31 42 Z" fill="#E53935"/>
+      <path d="M40 15 Q44 3 58 8 L54 18 Z" fill="#C62828" opacity=".6"/>
+      <rect x="30" y="32" width="60" height="12" rx="6" fill="#00897B"/>
+      <rect x="51" y="33" width="18" height="10" rx="3" fill="#B0BEC5"/>
+      <circle cx="60" cy="38" r="2" fill="#78909C"/>
+      ${chibiFace({eyes:'#3949AB',mouth:'#8D4E2A'})}
+    </g>
+  </g></svg>`;
+}
 
-const NINJA_HURT_F1=[
-  ...NINJA_IDLE_F1.map(([x,y,c])=>[x+1,y,c]),
-  // Dark flash
-  [5,7,'#FF2200'],[6,7,'#FF2200'],[7,7,'#FF2200'],
-];
+function cosmicSVG(){
+  const skin='#FFDDAA';
+  return `<svg class="ch" viewBox="0 0 120 150">
+  <g class="ch-root">
+    ${chibiBody({suit:'#7B1FA2',pants:'#4A148C',shoes:'#311B92',hands:skin,belt:'#CFD8DC',
+      chest:'<path d="M60 82 L63 89 L71 89 L65 94 L67 101 L60 97 L53 101 L55 94 L49 89 L57 89 Z" fill="#FFD600"/>'})}
+    <g class="ch-head">
+      <circle cx="60" cy="46" r="30" fill="${skin}"/>
+      <path d="M32 40 Q28 26 36 15 L42 24 Q42 8 52 4 L55 17 Q58 0 68 4 L67 17 Q76 6 84 14 L78 25 Q90 22 89 38 Q76 24 60 26 Q44 25 32 40 Z" fill="#263238"/>
+      <path d="M38 36 Q44 30 52 32" stroke="#263238" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+      <path d="M68 32 Q76 30 82 36" stroke="#263238" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+      ${chibiFace({eyes:'#5E35B1',mouth:'#8D5524'})}
+    </g>
+  </g></svg>`;
+}
 
-// ── COSMIC HERO (purple gi, spiky black hair, muscular)
-const SAIYAN_IDLE_F1=[
-  // Spiky black hair
-  [6,0,'#111'],[7,0,'#111'],[8,0,'#333'],[9,0,'#111'],
-  [4,1,'#111'],[5,1,'#111'],[6,1,'#111'],[7,1,'#222'],[8,1,'#111'],[9,1,'#111'],[10,1,'#111'],[11,1,'#111'],
-  [4,2,'#111'],[5,2,'#111'],[6,2,'#111'],[7,2,'#111'],[8,2,'#111'],[9,2,'#111'],[10,2,'#111'],
-  [5,3,'#111'],[6,3,'#111'],[7,3,'#111'],[8,3,'#111'],[9,3,'#111'],[10,3,'#111'],
-  // Face (tan skin)
-  [6,4,'#FFDDAA'],[7,4,'#FFDDAA'],[8,4,'#FFDDAA'],[9,4,'#FFDDAA'],[10,4,'#FFDDAA'],
-  // Eyes (black brow, eyes)
-  [6,3,'#111'],[10,3,'#111'],
-  [7,4,'#333'],[9,4,'#333'],
-  // Nose/mouth
-  [8,5,'#CC9966'],[8,6,'#FF6666'],
-  [6,5,'#FFDDAA'],[7,5,'#FFDDAA'],[8,5,'#FFDDAA'],[9,5,'#FFDDAA'],[10,5,'#FFDDAA'],
-  [7,6,'#FFDDAA'],[8,6,'#FFDDAA'],[9,6,'#FFDDAA'],
-  // Neck
-  [7,7,'#FFDDAA'],[8,7,'#FFDDAA'],[9,7,'#FFDDAA'],
-  // Purple gi top
-  [5,8,'#6A1B9A'],[6,8,'#6A1B9A'],[7,8,'#6A1B9A'],[8,8,'#4A148C'],[9,8,'#6A1B9A'],[10,8,'#6A1B9A'],[11,8,'#6A1B9A'],
-  [5,9,'#6A1B9A'],[6,9,'#6A1B9A'],[7,9,'#6A1B9A'],[8,9,'#6A1B9A'],[9,9,'#6A1B9A'],[10,9,'#6A1B9A'],[11,9,'#6A1B9A'],
-  [5,10,'#6A1B9A'],[6,10,'#6A1B9A'],[7,10,'#6A1B9A'],[8,10,'#4A148C'],[9,10,'#6A1B9A'],[10,10,'#6A1B9A'],[11,10,'#6A1B9A'],
-  // Magenta gi overlay/chest line
-  [8,8,'#AD1457'],[8,9,'#AD1457'],[8,10,'#AD1457'],
-  // Belt
-  [6,11,'#C0C0C0'],[7,11,'#C0C0C0'],[8,11,'#C0C0C0'],[9,11,'#C0C0C0'],[10,11,'#C0C0C0'],
-  // Arms (muscular, purple sleeveless)
-  [4,8,'#FFDDAA'],[4,9,'#FFDDAA'],[4,10,'#FFDDAA'],[4,11,'#FFDDAA'],
-  [12,8,'#FFDDAA'],[12,9,'#FFDDAA'],[12,10,'#FFDDAA'],[12,11,'#FFDDAA'],
-  // Pants (purple)
-  [6,12,'#6A1B9A'],[7,12,'#6A1B9A'],[9,12,'#6A1B9A'],[10,12,'#6A1B9A'],
-  [6,13,'#6A1B9A'],[7,13,'#6A1B9A'],[9,13,'#6A1B9A'],[10,13,'#6A1B9A'],
-  [6,14,'#6A1B9A'],[7,14,'#6A1B9A'],[9,14,'#6A1B9A'],[10,14,'#6A1B9A'],
-  // Boots (dark purple)
-  [5,15,'#2a0a4a'],[6,15,'#2a0a4a'],[7,15,'#2a0a4a'],[9,15,'#2a0a4a'],[10,15,'#2a0a4a'],[11,15,'#2a0a4a'],
-];
-const SAIYAN_IDLE_F2=SAIYAN_IDLE_F1.map(([x,y,c])=>[x,y+1,c]);
+function rangerSVG(){
+  const suit='#8E24AA', dark='#212121';
+  return `<svg class="ch" viewBox="0 0 120 150">
+  <g class="ch-root">
+    ${chibiBody({suit:suit,pants:dark,shoes:suit,hands:'#FFD600',belt:'#4A0072',
+      chest:'<path d="M60 82 L63 89 L71 89 L65 94 L67 101 L60 97 L53 101 L55 94 L49 89 L57 89 Z" fill="#FFD600"/>'})}
+    <g class="ch-head">
+      <circle cx="60" cy="46" r="30" fill="${suit}"/>
+      <path d="M60 16 L60 76" stroke="#6A1B9A" stroke-width="3"/>
+      <rect x="29" y="38" width="62" height="17" rx="8.5" fill="#FFD600"/>
+      <g class="ch-eye"><ellipse cx="46" cy="46.5" rx="9" ry="6.5" fill="#fff"/><ellipse cx="47.5" cy="47" rx="4" ry="3.4" fill="#311B92"/></g>
+      <g class="ch-eye"><ellipse cx="74" cy="46.5" rx="9" ry="6.5" fill="#fff"/><ellipse cx="75.5" cy="47" rx="4" ry="3.4" fill="#311B92"/></g>
+      <path class="ch-m ch-m-idle" d="M53 64 Q60 70 67 64" stroke="#4A0072" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path class="ch-m ch-m-hurt" d="M53 69 Q60 62 67 69" stroke="#4A0072" stroke-width="3" fill="none" stroke-linecap="round" opacity="0"/>
+      <g class="ch-m ch-m-joy" opacity="0"><path d="M51 63 Q60 74 69 63 Z" fill="#4A0072"/></g>
+    </g>
+  </g></svg>`;
+}
 
-const SAIYAN_ATTACK_F1=[
-  // Overdrive Mode — glowing white-cyan hair!
-  [6,0,'#00E5FF'],[7,0,'#00E5FF'],[8,0,'#E0FFFF'],[9,0,'#00E5FF'],
-  [4,1,'#00E5FF'],[5,1,'#00E5FF'],[6,1,'#00E5FF'],[7,1,'#E0FFFF'],[8,1,'#00E5FF'],[9,1,'#00E5FF'],[10,1,'#00E5FF'],[11,1,'#00E5FF'],
-  [3,2,'#00E5FF'],[4,2,'#00E5FF'],[5,2,'#00E5FF'],[6,2,'#00E5FF'],[7,2,'#00E5FF'],[8,2,'#00E5FF'],[9,2,'#00E5FF'],[10,2,'#00E5FF'],
-  [4,3,'#00E5FF'],[5,3,'#00E5FF'],[6,3,'#00E5FF'],[7,3,'#00E5FF'],[8,3,'#00E5FF'],[9,3,'#00E5FF'],[10,3,'#00E5FF'],
-  // Face
-  [6,4,'#FFDDAA'],[7,4,'#FFDDAA'],[8,4,'#FFDDAA'],[9,4,'#FFDDAA'],[10,4,'#FFDDAA'],
-  [7,4,'#B266FF'],[9,4,'#B266FF'], // violet eyes (Overdrive)
-  [6,5,'#FFDDAA'],[7,5,'#FFDDAA'],[8,5,'#FFDDAA'],[9,5,'#FFDDAA'],[10,5,'#FFDDAA'],
-  // Body (powered up)
-  [5,6,'#6A1B9A'],[6,6,'#6A1B9A'],[7,6,'#6A1B9A'],[8,6,'#AD1457'],[9,6,'#6A1B9A'],[10,6,'#6A1B9A'],
-  [4,7,'#6A1B9A'],[5,7,'#6A1B9A'],[6,7,'#6A1B9A'],[7,7,'#6A1B9A'],[8,7,'#6A1B9A'],[9,7,'#6A1B9A'],[10,7,'#6A1B9A'],[11,7,'#6A1B9A'],
-  [4,8,'#6A1B9A'],[5,8,'#6A1B9A'],[6,8,'#6A1B9A'],[7,8,'#4A148C'],[8,8,'#6A1B9A'],[9,8,'#6A1B9A'],[10,8,'#6A1B9A'],[11,8,'#6A1B9A'],
-  [5,9,'#C0C0C0'],[6,9,'#C0C0C0'],[7,9,'#C0C0C0'],[8,9,'#C0C0C0'],[9,9,'#C0C0C0'],
-  // Arms: one extended forward for Cosmic Wave
-  [2,6,'#FFDDAA'],[1,6,'#FFDDAA'],[0,6,'#FFDDAA'],
-  [2,7,'#FFDDAA'],[1,7,'#FFDDAA'],[0,7,'#FFDDAA'],
-  [3,6,'#FFDDAA'],[3,7,'#FFDDAA'],
-  [12,6,'#FFDDAA'],[12,7,'#FFDDAA'],
-  // Beam energy at hands
-  [0,5,'#00E5FF'],[0,6,'#4fc3f7'],
-  [0,8,'#00E5FF'],[0,7,'#4fc3f7'],
-  // Legs
-  [5,10,'#6A1B9A'],[6,10,'#6A1B9A'],[9,10,'#6A1B9A'],[10,10,'#6A1B9A'],
-  [5,11,'#6A1B9A'],[6,11,'#6A1B9A'],[9,11,'#6A1B9A'],[10,11,'#6A1B9A'],
-  [5,12,'#2a0a4a'],[6,12,'#2a0a4a'],[9,12,'#2a0a4a'],[10,12,'#2a0a4a'],
-];
+/* ── ENEMIES — goofy-cute cartoon monsters ── */
+function enemySVG(kind,tint){
+  if(kind==='snake') return snakeSVG(tint||'#16A085');
+  if(kind==='alien') return alienSVG(tint||'#26A69A');
+  return beastSVG(tint||'#4A148C');
+}
 
-// ── WEB RANGER (violet/black suit, star emblem)
-const SPIDER_IDLE_F1=[
-  // Head (violet mask)
-  [6,0,'#7B1FA2'],[7,0,'#7B1FA2'],[8,0,'#7B1FA2'],[9,0,'#7B1FA2'],[10,0,'#7B1FA2'],
-  [5,1,'#7B1FA2'],[6,1,'#7B1FA2'],[7,1,'#7B1FA2'],[8,1,'#7B1FA2'],[9,1,'#7B1FA2'],[10,1,'#7B1FA2'],[11,1,'#7B1FA2'],
-  [5,2,'#7B1FA2'],[6,2,'#7B1FA2'],[7,2,'#7B1FA2'],[8,2,'#7B1FA2'],[9,2,'#7B1FA2'],[10,2,'#7B1FA2'],[11,2,'#7B1FA2'],
-  // Gold visor stripe (single band, not lens ovals)
-  [6,2,'#FFD700'],[7,2,'#FFD700'],[8,2,'#FFC400'],[9,2,'#FFD700'],[10,2,'#FFD700'],
-  // Center head stripe
-  [8,0,'#4A0072'],[8,1,'#4A0072'],[8,2,'#4A0072'],[8,3,'#4A0072'],
-  [5,3,'#7B1FA2'],[6,3,'#7B1FA2'],[7,3,'#7B1FA2'],[8,3,'#7B1FA2'],[9,3,'#7B1FA2'],[10,3,'#7B1FA2'],[11,3,'#7B1FA2'],
-  // Neck
-  [7,4,'#7B1FA2'],[8,4,'#7B1FA2'],[9,4,'#7B1FA2'],
-  // Chest (violet with star emblem)
-  [5,5,'#7B1FA2'],[6,5,'#7B1FA2'],[7,5,'#7B1FA2'],[8,5,'#4A0072'],[9,5,'#7B1FA2'],[10,5,'#7B1FA2'],[11,5,'#7B1FA2'],
-  [5,6,'#7B1FA2'],[6,6,'#7B1FA2'],[7,6,'#7B1FA2'],[8,6,'#7B1FA2'],[9,6,'#7B1FA2'],[10,6,'#7B1FA2'],[11,6,'#7B1FA2'],
-  // Star emblem
-  [8,5,'#FFD700'],[7,6,'#FFD700'],[9,6,'#FFD700'],
-  // Dark sides/arms
-  [4,5,'#111'],[4,6,'#111'],[4,7,'#111'],[4,8,'#111'],
-  [12,5,'#111'],[12,6,'#111'],[12,7,'#111'],[12,8,'#111'],
-  // Dark lower body
-  [5,7,'#111'],[6,7,'#7B1FA2'],[7,7,'#7B1FA2'],[8,7,'#7B1FA2'],[9,7,'#7B1FA2'],[10,7,'#7B1FA2'],[11,7,'#111'],
-  [5,8,'#111'],[6,8,'#111'],[7,8,'#111'],[8,8,'#111'],[9,8,'#111'],[10,8,'#111'],[11,8,'#111'],
-  // Trim pattern on dark suit
-  [6,8,'#2a2a2a'],[9,8,'#2a2a2a'],
-  // Belt area
-  [6,9,'#4A0072'],[7,9,'#4A0072'],[8,9,'#4A0072'],[9,9,'#4A0072'],[10,9,'#4A0072'],
-  // Legs (dark)
-  [6,10,'#111'],[7,10,'#111'],[9,10,'#111'],[10,10,'#111'],
-  [6,11,'#111'],[7,11,'#111'],[9,11,'#111'],[10,11,'#111'],
-  [6,12,'#111'],[7,12,'#111'],[9,12,'#111'],[10,12,'#111'],
-  [6,13,'#111'],[7,13,'#111'],[9,13,'#111'],[10,13,'#111'],
-  // Feet (violet)
-  [5,14,'#7B1FA2'],[6,14,'#7B1FA2'],[7,14,'#7B1FA2'],[9,14,'#7B1FA2'],[10,14,'#7B1FA2'],[11,14,'#7B1FA2'],
-];
-const SPIDER_IDLE_F2=SPIDER_IDLE_F1.map(([x,y,c])=>[x,y+1,c]);
+function snakeSVG(tint){
+  return `<svg class="ch en" viewBox="0 0 140 150">
+  <g class="ch-root">
+    <path d="M100 130 Q124 128 122 112 Q120 98 104 102 Q92 106 96 118 Z" fill="${tint}" opacity=".85"/>
+    <g class="ch-torso">
+      <path d="M40 148 Q36 84 70 82 Q104 84 100 148 Z" fill="#263238"/>
+      <path d="M56 148 Q54 100 70 98 Q86 100 84 148 Z" fill="#37474F"/>
+    </g>
+    <g class="ch-head">
+      <ellipse cx="70" cy="52" rx="34" ry="30" fill="${tint}"/>
+      <path d="M38 40 Q34 12 60 16 Q70 6 80 16 Q106 12 102 40 Q86 28 70 30 Q54 28 38 40 Z" fill="#263238"/>
+      <ellipse cx="70" cy="66" rx="16" ry="10" fill="#E8F5E9" opacity=".9"/>
+      <g class="ch-eye"><ellipse cx="55" cy="48" rx="8" ry="9" fill="#FFEB3B"/><ellipse cx="55" cy="49" rx="2.6" ry="6" fill="#1B1B1B"/></g>
+      <g class="ch-eye"><ellipse cx="85" cy="48" rx="8" ry="9" fill="#FFEB3B"/><ellipse cx="85" cy="49" rx="2.6" ry="6" fill="#1B1B1B"/></g>
+      <g class="sn-tongue"><path d="M70 74 Q70 84 66 88 M70 84 Q72 88 75 89" stroke="#FF1744" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+    </g>
+  </g></svg>`;
+}
 
-const SPIDER_ATTACK_F1=[
-  // Head
-  [6,0,'#7B1FA2'],[7,0,'#7B1FA2'],[8,0,'#7B1FA2'],[9,0,'#7B1FA2'],
-  [5,1,'#7B1FA2'],[6,1,'#7B1FA2'],[7,1,'#7B1FA2'],[8,1,'#7B1FA2'],[9,1,'#7B1FA2'],[10,1,'#7B1FA2'],
-  [5,2,'#7B1FA2'],[6,2,'#FFD700'],[7,2,'#FFD700'],[8,2,'#7B1FA2'],[9,2,'#FFD700'],[10,2,'#FFD700'],
-  [5,3,'#7B1FA2'],[6,3,'#7B1FA2'],[7,3,'#7B1FA2'],[8,3,'#7B1FA2'],[9,3,'#7B1FA2'],[10,3,'#7B1FA2'],
-  [7,4,'#7B1FA2'],[8,4,'#7B1FA2'],
-  // Body leaning (web-shooting pose)
-  [5,5,'#7B1FA2'],[6,5,'#7B1FA2'],[7,5,'#7B1FA2'],[8,5,'#7B1FA2'],[9,5,'#7B1FA2'],
-  [5,6,'#7B1FA2'],[6,6,'#7B1FA2'],[7,6,'#7B1FA2'],[8,6,'#7B1FA2'],[9,6,'#7B1FA2'],
-  [5,7,'#111'],[6,7,'#111'],[7,7,'#111'],[8,7,'#111'],
-  [5,8,'#111'],[6,8,'#111'],[7,8,'#111'],[8,8,'#111'],
-  [6,9,'#4A0072'],[7,9,'#4A0072'],[8,9,'#4A0072'],
-  // Web-shooting arm extended up-right
-  [10,4,'#7B1FA2'],[11,4,'#7B1FA2'],[12,4,'#7B1FA2'],[13,4,'#7B1FA2'],
-  [10,3,'#7B1FA2'],[11,3,'#7B1FA2'],
-  [13,3,'#7B1FA2'],[14,3,'#7B1FA2'],[15,3,'#7B1FA2'],
-  // Web fluid at wrist
-  [14,2,'#ddd'],[15,2,'#ddd'],[15,3,'#ddd'],
-  // Legs (kick pose)
-  [4,10,'#111'],[5,10,'#111'],[6,10,'#111'],
-  [3,11,'#111'],[4,11,'#111'],
-  [3,12,'#7B1FA2'],[4,12,'#7B1FA2'],
-  [7,10,'#111'],[8,10,'#111'],[9,10,'#111'],
-  [9,11,'#111'],[10,11,'#111'],
-  [9,12,'#7B1FA2'],[10,12,'#7B1FA2'],
-];
+function alienSVG(tint){
+  return `<svg class="ch en" viewBox="0 0 140 150">
+  <g class="ch-root">
+    <g class="ch-legs">
+      <rect x="52" y="118" width="14" height="22" rx="7" fill="${tint}"/>
+      <rect x="74" y="118" width="14" height="22" rx="7" fill="${tint}"/>
+      <ellipse cx="59" cy="141" rx="11" ry="6" fill="#E65100"/>
+      <ellipse cx="81" cy="141" rx="11" ry="6" fill="#E65100"/>
+    </g>
+    <g class="ch-arm ch-arm-l"><rect x="30" y="84" width="13" height="34" rx="6.5" fill="${tint}"/><circle cx="36.5" cy="120" r="8" fill="#E65100"/></g>
+    <g class="ch-arm ch-arm-r"><rect x="97" y="84" width="13" height="34" rx="6.5" fill="${tint}"/><circle cx="103.5" cy="120" r="8" fill="#E65100"/></g>
+    <g class="ch-torso">
+      <rect x="42" y="78" width="56" height="46" rx="17" fill="${tint}"/>
+      <ellipse cx="52" cy="82" rx="12" ry="8" fill="#E65100"/>
+      <ellipse cx="88" cy="82" rx="12" ry="8" fill="#E65100"/>
+      <circle cx="70" cy="100" r="9" fill="#FFF9C4"/>
+      <circle cx="70" cy="100" r="4.5" fill="#E65100"/>
+    </g>
+    <g class="ch-head">
+      <ellipse cx="70" cy="42" rx="30" ry="27" fill="${tint}"/>
+      <path d="M52 20 Q70 4 88 20 Q78 14 70 15 Q62 14 52 20 Z" fill="#E65100"/>
+      <circle cx="70" cy="10" r="5" fill="#FFEB3B"/>
+      <rect x="68" y="12" width="4" height="10" fill="#E65100"/>
+      <g class="ch-eye"><ellipse cx="56" cy="42" rx="9" ry="11" fill="#FFF9C4"/><circle cx="57" cy="44" r="4.5" fill="#1B1B1B"/></g>
+      <g class="ch-eye"><ellipse cx="84" cy="42" rx="9" ry="11" fill="#FFF9C4"/><circle cx="85" cy="44" r="4.5" fill="#1B1B1B"/></g>
+      <path class="ch-m ch-m-idle" d="M60 60 Q70 66 80 60" stroke="#0D3B34" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+    </g>
+  </g></svg>`;
+}
 
-// ── ENEMIES
-// Snake sorcerer (original design)
-const ENEMY_SNAKE=[
-  [5,0,'#16A085'],[6,0,'#16A085'],[7,0,'#16A085'],[8,0,'#16A085'],[9,0,'#16A085'],
-  [4,1,'#16A085'],[5,1,'#16A085'],[6,1,'#D5F5EA'],[7,1,'#D5F5EA'],[8,1,'#D5F5EA'],[9,1,'#16A085'],[10,1,'#16A085'],
-  [4,2,'#16A085'],[5,2,'#D5F5EA'],[6,2,'#D5F5EA'],[7,2,'#D5F5EA'],[8,2,'#D5F5EA'],[9,2,'#D5F5EA'],[10,2,'#16A085'],
-  [5,3,'#D5F5EA'],[6,3,'#D5F5EA'],[7,3,'#D5F5EA'],[8,3,'#D5F5EA'],[9,3,'#D5F5EA'],
-  // Yellow snake eyes
-  [6,2,'#FFD700'],[8,2,'#FFD700'],
-  [7,3,'#FF0000'], // tongue
-  // Robe (black)
-  [4,4,'#111'],[5,4,'#111'],[6,4,'#111'],[7,4,'#111'],[8,4,'#111'],[9,4,'#111'],[10,4,'#111'],
-  [4,5,'#111'],[5,5,'#111'],[6,5,'#1a1a1a'],[7,5,'#111'],[8,5,'#1a1a1a'],[9,5,'#111'],[10,5,'#111'],
-  [4,6,'#111'],[5,6,'#111'],[6,6,'#111'],[7,6,'#111'],[8,6,'#111'],[9,6,'#111'],[10,6,'#111'],
-  [4,7,'#111'],[5,7,'#111'],[6,7,'#111'],[7,7,'#111'],[8,7,'#111'],[9,7,'#111'],[10,7,'#111'],
-  [5,8,'#111'],[6,8,'#111'],[7,8,'#111'],[8,8,'#111'],[9,8,'#111'],
-  // White chest
-  [6,5,'#fff'],[7,5,'#fff'],[8,5,'#fff'],
-  [6,6,'#fff'],[7,6,'#eee'],
-  // Snake hands
-  [3,5,'#16A085'],[3,6,'#16A085'],[2,7,'#16A085'],
-  [11,5,'#16A085'],[11,6,'#16A085'],[12,7,'#16A085'],
-  // Legs/robe bottom
-  [5,9,'#111'],[6,9,'#111'],[7,9,'#111'],[8,9,'#111'],[9,9,'#111'],
-  [5,10,'#111'],[6,10,'#111'],[8,10,'#111'],[9,10,'#111'],
-  [5,11,'#111'],[6,11,'#111'],[8,11,'#111'],[9,11,'#111'],
-  [5,12,'#222'],[6,12,'#222'],[8,12,'#222'],[9,12,'#222'],
-];
-
-// Alien warlord (original design)
-const ENEMY_ALIEN=[
-  // Head (teal/orange)
-  [6,0,'#26A69A'],[7,0,'#26A69A'],[8,0,'#26A69A'],[9,0,'#26A69A'],
-  [5,1,'#26A69A'],[6,1,'#26A69A'],[7,1,'#26A69A'],[8,1,'#26A69A'],[9,1,'#26A69A'],[10,1,'#26A69A'],
-  [5,2,'#26A69A'],[6,2,'#26A69A'],[7,2,'#26A69A'],[8,2,'#26A69A'],[9,2,'#26A69A'],[10,2,'#26A69A'],
-  // Orange markings on head
-  [5,1,'#E65100'],[10,1,'#E65100'],
-  [5,2,'#E65100'],[10,2,'#E65100'],
-  // Yellow eyes
-  [6,2,'#FFD700'],[9,2,'#FFD700'],
-  [5,3,'#26A69A'],[6,3,'#26A69A'],[7,3,'#26A69A'],[8,3,'#26A69A'],[9,3,'#26A69A'],[10,3,'#26A69A'],
-  // Neck & body (teal armor)
-  [7,4,'#26A69A'],[8,4,'#26A69A'],[9,4,'#26A69A'],
-  [5,5,'#26A69A'],[6,5,'#26A69A'],[7,5,'#26A69A'],[8,5,'#1D7A70'],[9,5,'#26A69A'],[10,5,'#26A69A'],[11,5,'#26A69A'],
-  [5,6,'#E65100'],[6,6,'#E65100'],[7,6,'#E65100'],[8,6,'#26A69A'],[9,6,'#E65100'],[10,6,'#E65100'],[11,6,'#E65100'],
-  [5,7,'#26A69A'],[6,7,'#26A69A'],[7,7,'#26A69A'],[8,7,'#26A69A'],[9,7,'#26A69A'],[10,7,'#26A69A'],[11,7,'#26A69A'],
-  [5,8,'#26A69A'],[6,8,'#26A69A'],[7,8,'#1D7A70'],[8,8,'#26A69A'],[9,8,'#1D7A70'],[10,8,'#26A69A'],[11,8,'#26A69A'],
-  // Legs (orange/teal)
-  [6,9,'#E65100'],[7,9,'#E65100'],[9,9,'#E65100'],[10,9,'#E65100'],
-  [6,10,'#26A69A'],[7,10,'#26A69A'],[9,10,'#26A69A'],[10,10,'#26A69A'],
-  [6,11,'#26A69A'],[7,11,'#26A69A'],[9,11,'#26A69A'],[10,11,'#26A69A'],
-  [5,12,'#E65100'],[6,12,'#E65100'],[7,12,'#E65100'],[9,12,'#E65100'],[10,12,'#E65100'],[11,12,'#E65100'],
-];
-
-// Shadow beast (original design)
-const ENEMY_VENOM=[
-  // Head (dark purple, huge)
-  [4,0,'#2a0a3a'],[5,0,'#2a0a3a'],[6,0,'#2a0a3a'],[7,0,'#2a0a3a'],[8,0,'#2a0a3a'],[9,0,'#2a0a3a'],[10,0,'#2a0a3a'],
-  [3,1,'#1a0526'],[4,1,'#1a0526'],[5,1,'#1a0526'],[6,1,'#1a0526'],[7,1,'#1a0526'],[8,1,'#1a0526'],[9,1,'#1a0526'],[10,1,'#1a0526'],[11,1,'#1a0526'],
-  [3,2,'#1a0526'],[4,2,'#1a0526'],[5,2,'#1a0526'],[6,2,'#1a0526'],[7,2,'#1a0526'],[8,2,'#1a0526'],[9,2,'#1a0526'],[10,2,'#1a0526'],[11,2,'#1a0526'],
-  // Glowing red slit eyes
-  [4,1,'#FF3333'],
-  [10,1,'#FF3333'],
-  // Claw-mark scars (orange)
-  [5,3,'#1a0526'],[6,3,'#FF6B00'],[7,3,'#1a0526'],[8,3,'#FF6B00'],[9,3,'#1a0526'],[10,3,'#1a0526'],
-  [6,4,'#1a0526'],[7,4,'#FF6B00'],[8,4,'#1a0526'],[9,4,'#1a0526'],
-  // Body (huge, muscular, dark purple)
-  [3,3,'#1a0526'],[4,3,'#1a0526'],[5,3,'#1a0526'],[10,3,'#1a0526'],[11,3,'#1a0526'],[12,3,'#1a0526'],
-  [3,4,'#1a0526'],[4,4,'#1a0526'],[5,4,'#1a0526'],[10,4,'#1a0526'],[11,4,'#1a0526'],[12,4,'#1a0526'],
-  [3,5,'#1a0526'],[4,5,'#1a0526'],[5,5,'#1a0526'],[6,5,'#1a0526'],[7,5,'#1a0526'],[8,5,'#1a0526'],[9,5,'#1a0526'],[10,5,'#1a0526'],[11,5,'#1a0526'],[12,5,'#1a0526'],
-  [3,6,'#1a0526'],[4,6,'#1a0526'],[5,6,'#1a0526'],[6,6,'#1a0526'],[7,6,'#1a0526'],[8,6,'#1a0526'],[9,6,'#1a0526'],[10,6,'#1a0526'],[11,6,'#1a0526'],[12,6,'#1a0526'],
-  // Claw-mark scars on chest (orange)
-  [7,5,'#FF6B00'],[8,5,'#FF6B00'],
-  [6,6,'#FF6B00'],[9,6,'#FF6B00'],
-  [5,7,'#FF6B00'],[10,7,'#FF6B00'],
-  [3,7,'#1a0526'],[4,7,'#1a0526'],[5,7,'#1a0526'],[6,7,'#1a0526'],[7,7,'#1a0526'],[8,7,'#1a0526'],[9,7,'#1a0526'],[10,7,'#1a0526'],[11,7,'#1a0526'],[12,7,'#1a0526'],
-  [4,8,'#1a0526'],[5,8,'#1a0526'],[6,8,'#1a0526'],[7,8,'#1a0526'],[8,8,'#1a0526'],[9,8,'#1a0526'],[10,8,'#1a0526'],[11,8,'#1a0526'],
-  // Legs
-  [5,9,'#1a0526'],[6,9,'#1a0526'],[9,9,'#1a0526'],[10,9,'#1a0526'],
-  [5,10,'#1a0526'],[6,10,'#1a0526'],[9,10,'#1a0526'],[10,10,'#1a0526'],
-  [4,11,'#1a0526'],[5,11,'#1a0526'],[10,11,'#1a0526'],[11,11,'#1a0526'],
-  [4,12,'#2a0a3a'],[5,12,'#2a0a3a'],[10,12,'#2a0a3a'],[11,12,'#2a0a3a'],
-];
+function beastSVG(tint){
+  return `<svg class="ch en" viewBox="0 0 140 150">
+  <g class="ch-root">
+    <g class="ch-torso">
+      <path d="M28 148 Q14 74 70 68 Q126 74 112 148 Z" fill="${tint}"/>
+      <path d="M40 148 Q34 96 70 92 Q106 96 100 148 Z" fill="#000" opacity=".22"/>
+      <path d="M52 104 L60 124 M64 100 L70 122 M78 102 L84 122" stroke="#FF6D00" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <g class="ch-arm ch-arm-l"><path d="M30 92 Q10 100 16 122 Q20 134 32 130 Z" fill="${tint}"/><path d="M18 124 L12 132 M24 128 L20 137 M30 129 L28 138" stroke="#eee" stroke-width="3" stroke-linecap="round"/></g>
+    <g class="ch-arm ch-arm-r"><path d="M110 92 Q130 100 124 122 Q120 134 108 130 Z" fill="${tint}"/><path d="M122 124 L128 132 M116 128 L120 137 M110 129 L112 138" stroke="#eee" stroke-width="3" stroke-linecap="round"/></g>
+    <g class="ch-head">
+      <path d="M34 30 Q28 8 46 16 Z" fill="${tint}"/>
+      <path d="M106 30 Q112 8 94 16 Z" fill="${tint}"/>
+      <ellipse cx="70" cy="46" rx="36" ry="30" fill="${tint}"/>
+      <g class="en-glow"><circle cx="54" cy="42" r="8" fill="#FF1744"/><circle cx="54" cy="42" r="3.6" fill="#FFCDD2"/></g>
+      <g class="en-glow"><circle cx="86" cy="42" r="8" fill="#FF1744"/><circle cx="86" cy="42" r="3.6" fill="#FFCDD2"/></g>
+      <path d="M48 62 Q70 74 92 62 L86 70 L78 64 L70 72 L62 64 L54 70 Z" fill="#fff"/>
+    </g>
+  </g></svg>`;
+}
 
 /* ═══════════════════════════════════════════
    HERO / ENEMY CONFIG
@@ -1674,44 +1611,41 @@ const ENEMY_VENOM=[
 const HEROES={
   ninja:{
     name:'NINJA',color:'#FF6B00',skyClass:'sky-ninja',gndClass:'gnd-ninja',
-    frames:{idle:[NINJA_IDLE_F1,NINJA_IDLE_F2],attack:[NINJA_ATTACK_F1,NINJA_IDLE_F1],hurt:[NINJA_HURT_F1,NINJA_IDLE_F1]},
     jutsus:[
       {name:'VORTEX BLAST', icon:'🌀',cls:'proj-rasengan',impact:'💥',color:'#4fc3f7',dmg:2,dur:.55,pw:32,ph:32,offsetY:-16},
       {name:'SHURIKEN',    icon:'✴️', cls:'proj-shuriken',impact:'💫',color:'#FF8C00',dmg:1,dur:.42,pw:24,ph:24,offsetY:-12},
       {name:'SWORD DASH',  icon:'⚔️', cls:'proj-sword',   impact:'💥',color:'#FFD700',dmg:3,dur:.55,pw:0,ph:0,offsetY:-20, isSword:true},
     ],
     enemies:[
-      {name:'SNAKE LORD',  frames:[ENEMY_SNAKE],color:'#9B59B6',eshot:'#9B59B6'},
-      {name:'IRON GOLEM',  frames:[ENEMY_ALIEN],color:'#CC2200',eshot:'#CC2200'},
-      {name:'DARK LORD',   frames:[ENEMY_VENOM],color:'#333',   eshot:'#8E44AD'},
+      {name:'SNAKE LORD',  kind:'snake',color:'#9B59B6',eshot:'#9B59B6'},
+      {name:'IRON GOLEM',  kind:'alien',color:'#CC2200',eshot:'#CC2200'},
+      {name:'DARK LORD',   kind:'beast',color:'#333',   eshot:'#8E44AD'},
     ]
   },
   saiyan:{
     name:'COSMIC HERO',color:'#FFD600',skyClass:'sky-saiyan',gndClass:'gnd-saiyan',
-    frames:{idle:[SAIYAN_IDLE_F1,SAIYAN_IDLE_F2],attack:[SAIYAN_ATTACK_F1,SAIYAN_IDLE_F1],hurt:[SAIYAN_IDLE_F2,SAIYAN_IDLE_F1]},
     jutsus:[
       {name:'COSMIC WAVE', icon:'⚡',cls:'proj-kame',  impact:'🌟',color:'#00E5FF',dmg:3,dur:.65,pw:48,ph:20,offsetY:-10},
       {name:'STAR BOLT',   icon:'🔵',cls:'proj-ki',    impact:'💥',color:'#FFD600',dmg:1,dur:.38,pw:20,ph:20,offsetY:-10},
       {name:'GALAXY ORB',  icon:'🌐',cls:'proj-spirit',impact:'✨',color:'#4fc3f7',dmg:3,dur:.85,pw:44,ph:44,offsetY:-22},
     ],
     enemies:[
-      {name:'GALAXY TYRANT',frames:[ENEMY_ALIEN],color:'#8E44AD',eshot:'#8E44AD'},
-      {name:'BIO WARRIOR',  frames:[ENEMY_SNAKE],color:'#27AE60',eshot:'#27AE60'},
-      {name:'DARK WARLORD', frames:[ENEMY_VENOM],color:'#CC2200',eshot:'#CC2200'},
+      {name:'GALAXY TYRANT',kind:'alien',color:'#8E44AD',eshot:'#8E44AD'},
+      {name:'BIO WARRIOR',  kind:'snake',color:'#27AE60',eshot:'#27AE60'},
+      {name:'DARK WARLORD', kind:'beast',color:'#CC2200',eshot:'#CC2200'},
     ]
   },
   spider:{
     name:'WEB RANGER',color:'#7B1FA2',skyClass:'sky-spider',gndClass:'gnd-spider',
-    frames:{idle:[SPIDER_IDLE_F1,SPIDER_IDLE_F2],attack:[SPIDER_ATTACK_F1,SPIDER_IDLE_F1],hurt:[SPIDER_IDLE_F2,SPIDER_IDLE_F1]},
     jutsus:[
       {name:'WEB SHOT',    icon:'🕸️',cls:'proj-web', impact:'💢',color:'#ddd',   dmg:1,dur:.42,pw:0,ph:0,offsetY:-10},
       {name:'RANGER KICK', icon:'🦵',cls:'proj-kick',impact:'💥',color:'#7B1FA2',dmg:2,dur:.38,pw:0,ph:0,offsetY:-20},
       {name:'WEB SLAM',    icon:'💥',cls:'proj-slam',impact:'💥',color:'#7B1FA2',dmg:2,dur:.52,pw:0,ph:0,offsetY:-14},
     ],
     enemies:[
-      {name:'SHADOW BEAST',  frames:[ENEMY_VENOM],color:'#1a1a1a',eshot:'#333'},
-      {name:'GOBLIN KING',   frames:[ENEMY_SNAKE],color:'#2E7D32',eshot:'#4CAF50'},
-      {name:'TYRANT',        frames:[ENEMY_ALIEN],color:'#8E44AD',eshot:'#9B59B6'},
+      {name:'SHADOW BEAST',  kind:'beast',color:'#1a1a1a',eshot:'#333'},
+      {name:'GOBLIN KING',   kind:'snake',color:'#2E7D32',eshot:'#4CAF50'},
+      {name:'TYRANT',        kind:'alien',color:'#8E44AD',eshot:'#9B59B6'},
     ]
   }
 };
@@ -1808,37 +1742,12 @@ const JOURNEY = {
 };
 
 /* ═══════════════════════════════════════════
-   ANIMATION LOOP — canvas sprite animator
+   ANIMATION STATE — CSS classes drive the SVG
+   characters; no canvas frame loop needed.
 ═══════════════════════════════════════════ */
-let heroAnimState='idle',heroFrame=0,heroFrameTimer=0;
+let heroAnimState='idle',heroFrame=0,heroFrameTimer=0; // kept for legacy references
 let enemyAnimState='idle',enemyFrame=0,enemyFrameTimer=0;
 let animRunning=false;
-const FRAME_RATE=18; // frames per second
-
-function animTick(){
-  if(!animRunning)return;
-  heroFrameTimer++;
-  enemyFrameTimer++;
-  if(heroFrameTimer>FRAME_RATE/2){
-    heroFrameTimer=0;
-    const h=HEROES[G.heroKey];
-    const frames=h.frames[heroAnimState]||h.frames.idle;
-    heroFrame=(heroFrame+1)%frames.length;
-    const ctx=document.getElementById('heroCanvas').getContext('2d');
-    ctx.canvas.width=128;ctx.canvas.height=192;
-    drawPx(ctx,frames[heroFrame]);
-  }
-  if(enemyFrameTimer>FRAME_RATE/1.5){
-    enemyFrameTimer=0;
-    const eData=getEnemy();
-    const frames=eData.frames;
-    enemyFrame=(enemyFrame+1)%frames.length;
-    const ctx=document.getElementById('enemyCanvas').getContext('2d');
-    ctx.canvas.width=150;ctx.canvas.height=192;
-    drawPx(ctx,frames[enemyFrame]);
-  }
-  requestAnimationFrame(animTick);
-}
 
 const HERO_ANIM_CLASSES=['anim-idle','anim-charge','anim-attack','anim-hurt','anim-victory'];
 function applyHeroAnimClass(state){
@@ -1849,92 +1758,132 @@ function applyHeroAnimClass(state){
   el.classList.add('anim-'+state);
 }
 function setHeroAnim(state,duration){
-  heroAnimState=state;heroFrame=0;heroFrameTimer=0;
+  heroAnimState=state;
   applyHeroAnimClass(state);
   if(duration){
-    setTimeout(()=>{heroAnimState='idle';heroFrame=0;applyHeroAnimClass('idle');},duration);
+    setTimeout(()=>{heroAnimState='idle';applyHeroAnimClass('idle');},duration);
   }
 }
 function setEnemyAnim(state,duration){
-  enemyAnimState=state;enemyFrame=0;enemyFrameTimer=0;
+  enemyAnimState=state;
   if(duration){
-    setTimeout(()=>{enemyAnimState='idle';enemyFrame=0},duration);
+    setTimeout(()=>{enemyAnimState='idle'},duration);
   }
 }
 
 /* ═══════════════════════════════════════════
-   SKY CANVAS — pixel art backgrounds
+   SKY CANVAS — soft cartoon backgrounds
 ═══════════════════════════════════════════ */
+function puffCloud(ctx,cx,cy,s,alpha){
+  ctx.fillStyle='rgba(255,255,255,'+(alpha||.92)+')';
+  ctx.beginPath();
+  ctx.arc(cx,cy,14*s,0,Math.PI*2);
+  ctx.arc(cx+16*s,cy-8*s,17*s,0,Math.PI*2);
+  ctx.arc(cx+34*s,cy-2*s,13*s,0,Math.PI*2);
+  ctx.arc(cx+18*s,cy+6*s,15*s,0,Math.PI*2);
+  ctx.fill();
+}
+function softHills(ctx,w,h,base,amp,color){
+  ctx.fillStyle=color;
+  ctx.beginPath();
+  ctx.moveTo(0,h);
+  ctx.lineTo(0,base);
+  const humps=Math.max(3,Math.ceil(w/220));
+  for(let i=0;i<humps;i++){
+    const x0=(w/humps)*i, x1=(w/humps)*(i+1);
+    ctx.quadraticCurveTo((x0+x1)/2, base-amp*(i%2?0.75:1), x1, base);
+  }
+  ctx.lineTo(w,h);
+  ctx.closePath();ctx.fill();
+}
 function drawSky(){
   const canvas=document.getElementById('skyCanvas');
   const ctx=canvas.getContext('2d');
   canvas.width=canvas.offsetWidth||window.innerWidth;
-  canvas.height=canvas.offsetHeight||Math.floor(window.innerHeight*.56);
+  canvas.height=canvas.offsetHeight||Math.floor(window.innerHeight*.46);
   const w=canvas.width,h=canvas.height;
-  ctx.imageSmoothingEnabled=false;
   const hk=G.heroKey;
   if(hk==='ninja'){
-    // Blue sky gradient
+    // Sunny meadow
     const grad=ctx.createLinearGradient(0,0,0,h);
-    grad.addColorStop(0,'#5BC8F5');grad.addColorStop(1,'#A8E6B8');
+    grad.addColorStop(0,'#64C8F7');grad.addColorStop(1,'#C9F0D4');
     ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
-    // Pixel sun
-    ctx.fillStyle='#FFE066';ctx.fillRect(w-90,20,40,40);
-    ctx.fillStyle='#FFD700';ctx.fillRect(w-86,16,32,8);
-    ctx.fillRect(w-86,56,32,8);
-    ctx.fillRect(w-98,28,12,24);ctx.fillRect(w-74,28,12,24);
-    // Pixel clouds
-    [[60,30],[200,20],[w-160,40]].forEach(([cx,cy])=>{
-      ctx.fillStyle='rgba(255,255,255,.9)';
-      ctx.fillRect(cx,cy,60,16);
-      ctx.fillRect(cx+8,cy-10,44,12);
-      ctx.fillRect(cx+16,cy-18,28,10);
-    });
-    // Pixel mountains (green)
-    [[0,h-80,120,80],[80,h-100,140,100],[240,h-70,110,70],[380,h-90,130,90],[w-160,h-75,120,75]].forEach(([mx,my,mw,mh])=>{
-      ctx.fillStyle='#2E7D32';
-      ctx.beginPath();ctx.moveTo(mx,my+mh);ctx.lineTo(mx+mw/2,my);ctx.lineTo(mx+mw,my+mh);ctx.fill();
-      ctx.fillStyle='#1B5E20';
-      ctx.beginPath();ctx.moveTo(mx+mw*.3,my+mh);ctx.lineTo(mx+mw/2,my);ctx.lineTo(mx+mw*.7,my+mh*.2);ctx.fill();
-    });
+    // Glowing sun
+    const sunG=ctx.createRadialGradient(w-80,52,8,w-80,52,64);
+    sunG.addColorStop(0,'#FFFDE7');sunG.addColorStop(.5,'#FFE566');sunG.addColorStop(1,'rgba(255,214,0,0)');
+    ctx.fillStyle=sunG;ctx.beginPath();ctx.arc(w-80,52,64,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#FFE04A';ctx.beginPath();ctx.arc(w-80,52,26,0,Math.PI*2);ctx.fill();
+    // Fluffy clouds
+    puffCloud(ctx,60,44,1);puffCloud(ctx,w*.42,26,.8);puffCloud(ctx,w-190,72,.7,.8);
+    // Rolling hills
+    softHills(ctx,w,h,h-34,64,'#5BB765');
+    softHills(ctx,w,h,h-12,44,'#3E9B4F');
   } else if(hk==='saiyan'){
-    // Sunset
+    // Warm sunset desert
     const grad=ctx.createLinearGradient(0,0,0,h);
-    grad.addColorStop(0,'#FF8F00');grad.addColorStop(.5,'#FF6F00');grad.addColorStop(1,'#BF360C');
+    grad.addColorStop(0,'#FFB74D');grad.addColorStop(.55,'#FF8A50');grad.addColorStop(1,'#E5633C');
     ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
-    // Large sun
-    const sunG=ctx.createRadialGradient(w*.5,h*.2,10,w*.5,h*.2,90);
+    const sunG=ctx.createRadialGradient(w*.5,h*.28,12,w*.5,h*.28,110);
     sunG.addColorStop(0,'#FFFDE7');sunG.addColorStop(.4,'#FFF176');sunG.addColorStop(1,'rgba(255,214,0,0)');
-    ctx.fillStyle=sunG;ctx.beginPath();ctx.arc(w*.5,h*.2,90,0,Math.PI*2);ctx.fill();
-    // Rocky desert pillars
-    [[20,h-120,50,120],[100,h-90,40,90],[180,h-140,60,140],[w-80,h-110,50,110],[w-200,h-80,45,80]].forEach(([rx,ry,rw,rh])=>{
-      ctx.fillStyle='#5D4037';
-      ctx.fillRect(rx,ry,rw,rh);
-      ctx.fillStyle='#4E342E';
-      ctx.fillRect(rx,ry,rw,10);
+    ctx.fillStyle=sunG;ctx.beginPath();ctx.arc(w*.5,h*.28,110,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#FFF3B0';ctx.beginPath();ctx.arc(w*.5,h*.28,38,0,Math.PI*2);ctx.fill();
+    puffCloud(ctx,40,40,.8,.5);puffCloud(ctx,w-170,58,.9,.45);
+    // Rounded mesas
+    [[14,86,58],[110,58,42],[w*.5-110,100,64],[w-96,76,52],[w-220,52,44]].forEach(([rx,rh,rw])=>{
+      ctx.fillStyle='#8C5A45';
+      ctx.beginPath();
+      const ry=h-rh;
+      ctx.moveTo(rx,h);
+      ctx.lineTo(rx,ry+14);
+      ctx.quadraticCurveTo(rx,ry,rx+14,ry);
+      ctx.lineTo(rx+rw-14,ry);
+      ctx.quadraticCurveTo(rx+rw,ry,rx+rw,ry+14);
+      ctx.lineTo(rx+rw,h);
+      ctx.closePath();ctx.fill();
+      ctx.fillStyle='rgba(255,255,255,.14)';
+      ctx.fillRect(rx,ry,rw,9);
     });
   } else {
-    // City night
+    // Friendly starry night city
     const grad=ctx.createLinearGradient(0,0,0,h);
-    grad.addColorStop(0,'#0D1B4B');grad.addColorStop(1,'#3949AB');
+    grad.addColorStop(0,'#283593');grad.addColorStop(1,'#7986CB');
     ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
-    // Stars
-    for(let i=0;i<60;i++){
-      ctx.fillStyle=`rgba(255,255,255,${.3+Math.random()*.7})`;
-      ctx.fillRect(Math.random()*w,Math.random()*h*.6,Math.random()<.3?2:1,Math.random()<.3?2:1);
+    // Twinkly round stars
+    for(let i=0;i<44;i++){
+      ctx.fillStyle='rgba(255,255,255,'+(0.35+Math.random()*.65)+')';
+      ctx.beginPath();
+      ctx.arc(Math.random()*w,Math.random()*h*.55,Math.random()<.25?2.2:1.3,0,Math.PI*2);
+      ctx.fill();
     }
-    // Buildings
-    const bldgs=[[0,50,50],[60,70,40],[120,40,55],[190,80,35],[240,55,50],[310,65,40],[360,45,55],[420,75,45],[w-80,60,50],[w-140,40,45]];
+    // Smiling crescent moon
+    const mx=w-86,my=54;
+    const moonG=ctx.createRadialGradient(mx,my,6,mx,my,52);
+    moonG.addColorStop(0,'rgba(255,249,196,.9)');moonG.addColorStop(1,'rgba(255,249,196,0)');
+    ctx.fillStyle=moonG;ctx.beginPath();ctx.arc(mx,my,52,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#FFF59D';ctx.beginPath();ctx.arc(mx,my,24,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#3F51B5';ctx.beginPath();ctx.arc(mx-11,my-6,21,0,Math.PI*2);ctx.fill();
+    // Rounded skyline with warm windows
+    const bldgs=[[0,52,54],[62,78,46],[124,46,58],[196,86,40],[248,60,54],[318,72,44],[374,50,58],[w-146,44,48],[w-86,64,54]];
     bldgs.forEach(([bx,bh,bw])=>{
-      ctx.fillStyle='#1A237E';
-      ctx.fillRect(bx,h-bh,bw,bh);
-      ctx.fillStyle='#0D47A1';ctx.fillRect(bx,h-bh,bw,4);
-      // Windows
-      for(let r=0;r<Math.floor(bh/14);r++){
-        for(let c=0;c<Math.floor(bw/10);c++){
+      ctx.fillStyle='#303F9F';
+      ctx.beginPath();
+      const by=h-bh;
+      ctx.moveTo(bx,h);
+      ctx.lineTo(bx,by+10);
+      ctx.quadraticCurveTo(bx,by,bx+10,by);
+      ctx.lineTo(bx+bw-10,by);
+      ctx.quadraticCurveTo(bx+bw,by,bx+bw,by+10);
+      ctx.lineTo(bx+bw,h);
+      ctx.closePath();ctx.fill();
+      for(let r=0;r<Math.floor(bh/16);r++){
+        for(let cc=0;cc<Math.floor(bw/13);cc++){
           if(Math.random()>.4){
-            ctx.fillStyle=Math.random()>.5?'rgba(255,240,100,.85)':'rgba(100,180,255,.5)';
-            ctx.fillRect(bx+4+c*10,h-bh+8+r*14,6,8);
+            ctx.fillStyle=Math.random()>.5?'rgba(255,224,90,.9)':'rgba(144,202,249,.55)';
+            ctx.beginPath();
+            const wx=bx+7+cc*13, wy=h-bh+9+r*16;
+            ctx.moveTo(wx,wy+2);ctx.quadraticCurveTo(wx,wy,wx+2,wy);
+            ctx.lineTo(wx+5,wy);ctx.quadraticCurveTo(wx+7,wy,wx+7,wy+2);
+            ctx.lineTo(wx+7,wy+8);ctx.lineTo(wx,wy+8);ctx.closePath();ctx.fill();
           }
         }
       }
@@ -1974,13 +1923,7 @@ function pickHero(el){
 }
 
 function drawPreview(hk){
-  const h=HEROES[hk];
-  const frames=h.frames.idle;
-  const canvas=$(`prev-${hk}`);
-  canvas.width=128;canvas.height=192;
-  const ctx=canvas.getContext('2d');
-  ctx.imageSmoothingEnabled=false;
-  drawPx(ctx,frames[0]);
+  $(`prev-${hk}`).innerHTML=heroSVG(hk);
 }
 
 /* Draw all previews on load */
@@ -2010,9 +1953,7 @@ function loadEnemy(){
   const baseHp=Math.min(8, 2+G.level);
   G.enemyHp=baseHp;G.enemyMaxHp=baseHp;
   $('eName').textContent=e.name;
-  const ctx=$('enemyCanvas').getContext('2d');
-  $('enemyCanvas').width=150;$('enemyCanvas').height=192;
-  drawPx(ctx,e.frames[0]);
+  $('enemyCanvas').innerHTML=enemySVG(e.kind,e.color);
   // Reset any leftover death/hit/lunge animation state from a previous battle
   const eOuter=$('enemyOuter');
   if(eOuter){
@@ -2026,9 +1967,7 @@ function loadEnemy(){
 function applyHeroCanvas(){
   const h=HEROES[G.heroKey];
   $('hName').textContent=h.name;
-  const ctx=$('heroCanvas').getContext('2d');
-  $('heroCanvas').width=128;$('heroCanvas').height=192;
-  drawPx(ctx,h.frames.idle[0]);
+  $('heroCanvas').innerHTML=heroSVG(G.heroKey);
   updateBars();
 }
 
@@ -2147,7 +2086,8 @@ function showJutsuPanel(){
   h.jutsus.forEach((j,i)=>{
     const b=document.createElement('button');
     b.className='j-btn';
-    b.style.borderColor=j.color;b.style.color=j.color;
+    b.style.borderColor=j.color;b.style.color='#fff';
+    b.style.boxShadow='0 4px 14px '+j.color+'55';
     b.innerHTML=`<span class="j-icon">${j.icon}</span>${j.name}<span class="j-dmg">DMG: ${j.dmg}</span>`;
     b.onclick=()=>fireJutsu(i);
     btns.appendChild(b);
@@ -2488,7 +2428,7 @@ function spawnHeroImpact(x,y,color){
       'animation-delay:'+(i*.04)+'s',
       'position:fixed','z-index:211',
       'transform:translate(-50%,-50%)',
-      'animation:starBurst .6s steps(3) forwards',
+      'animation:starBurst .6s ease-out forwards',
       'pointer-events:none',
     ].join(';');
     document.body.appendChild(s);
@@ -2545,7 +2485,7 @@ function showBanner(text,color){
   b.textContent=text;b.style.color=color;b.style.borderColor=color;
   b.style.boxShadow=`4px 4px 0 ${color}44`;
   b.style.display='block';b.style.animation='none';b.offsetHeight;
-  b.style.animation='jBannerPx .9s steps(4) forwards';
+  b.style.animation='jBannerPx .9s ease-out forwards';
   setTimeout(()=>b.style.display='none',1000);
 }
 function hideQ(){
@@ -2559,10 +2499,8 @@ function hideQ(){
 function updateBars(){
   const ep=G.enemyMaxHp?(G.enemyHp/G.enemyMaxHp*100):0;
   $('eHpFill').style.width=ep+'%';$('eHpNum').textContent=G.enemyHp+'/'+G.enemyMaxHp;
-  if(ep<30)$('eHpFill').style.background='#FF1744';
-  const hp=G.heroMaxHp?(G.heroHp/G.heroMaxHp*100):0;
-  $('hHpFill').style.width=hp+'%';$('hHpNum').textContent=G.heroHp+'/'+G.heroMaxHp;
-  if(hp<30)$('hHpFill').style.background='#FF1744';
+  $('eHpFill').style.background=ep<30?'#FF1744':'';
+  $('heroHearts').innerHTML='❤️'.repeat(G.heroHp)+'🤍'.repeat(Math.max(0,G.heroMaxHp-G.heroHp));
 }
 
 /* ── WIN / LOSE ── */
@@ -2944,10 +2882,9 @@ function startSelectedLevel(){
   showJourneyTransition(lvData.name, ()=>{
     applyTheme(); loadEnemy(); applyHeroCanvas();
     heroAnimState='idle'; enemyAnimState='idle';
-    heroFrame=0; enemyFrame=0; heroFrameTimer=0; enemyFrameTimer=0;
+    applyHeroAnimClass('idle');
     showScreen('s-battle');
     animRunning=true;
-    requestAnimationFrame(animTick);
     AUD.startBGM(lvData.bgm||G.heroKey);
     setTimeout(beginPhase,700);
   });
@@ -2985,25 +2922,19 @@ function fireSwordAttack(jutsu, onComplete){
 
   // Phase 1: Hero charges up (already done by addPreAttackAura)
   // Phase 2: Hero DASHES toward enemy via CSS fixed position clone
-  const heroText=document.getElementById('heroCanvas');
   const dashEl=document.createElement('div');
   dashEl.style.cssText=[
     'position:fixed',
-    'left:'+(heroR.left+heroR.width*.5-48)+'px',
+    'left:'+(heroR.left+heroR.width*.5-65)+'px',
     'top:'+(heroR.top)+'px',
-    'font-size:'+heroR.height+'px',
+    'width:130px','height:163px',
     'z-index:190',
     'pointer-events:none',
     'will-change:transform',
     'transition:none',
   ].join(';');
-  // Place hero canvas clone
-  const cloneCanvas=document.createElement('canvas');
-  cloneCanvas.width=128; cloneCanvas.height=192;
-  cloneCanvas.style.cssText='image-rendering:pixelated;width:128px;height:192px;';
-  const clCtx=cloneCanvas.getContext('2d');
-  clCtx.drawImage(heroText,0,0);
-  dashEl.appendChild(cloneCanvas);
+  // Clone the hero SVG for the dash
+  dashEl.innerHTML=heroSVG(G.heroKey);
   document.body.appendChild(dashEl);
 
   // Animate dash using JS RAF
@@ -3154,8 +3085,8 @@ function maybeShowTutorial(){
   tip.style.cssText=[
     'position:fixed','bottom:42%','left:50%','transform:translateX(-50%)',
     'z-index:160','pointer-events:none',
-    "font-family:'Press Start 2P',monospace",
-    'font-size:clamp(8px,2.2vw,11px)','color:#FFD600',
+    "font-family:'Baloo 2','Nunito',sans-serif",
+    'font-size:clamp(12px,2.2vw,11px)','color:#FFD600',
     'background:rgba(0,0,0,.85)','border:2px solid #FFD600',
     'padding:8px 14px','letter-spacing:1px','white-space:nowrap',
     'box-shadow:0 0 16px rgba(255,214,0,.4)',
@@ -3442,10 +3373,10 @@ const AUD = (function(){
   btn.setAttribute('aria-label','Toggle sound');
   btn.style.cssText=[
     'position:fixed','bottom:14px','right:14px','z-index:999',
-    'width:44px','height:44px','border-radius:0',
-    'background:#000','border:3px solid #FFD600',
+    'width:48px','height:48px','border-radius:50%',
+    'background:rgba(10,12,40,.92)','border:3px solid #FFD600',
     'color:#FFD600','font-size:18px','cursor:pointer',
-    'box-shadow:3px 3px 0 #8B7200','line-height:1',
+    'box-shadow:0 3px 8px rgba(0,0,0,.45)','line-height:1',
     'display:flex','align-items:center','justify-content:center',
   ].join(';');
   btn.onclick=function(){
@@ -3453,7 +3384,7 @@ const AUD = (function(){
     btn.textContent=on?'🔊':'🔇';
     btn.style.borderColor=on?'#FFD600':'#555';
     btn.style.color=on?'#FFD600':'#555';
-    btn.style.boxShadow=on?'3px 3px 0 #8B7200':'3px 3px 0 #333';
+    btn.style.boxShadow='0 3px 8px rgba(0,0,0,.45)';
   };
   document.body.appendChild(btn);
 })();
