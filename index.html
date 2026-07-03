@@ -555,6 +555,26 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 }
 @keyframes webTrav{0%{transform:scale(.3) rotate(-20deg)}100%{transform:scale(1) rotate(10deg)}}
 
+/* Captain Punch projectiles — flying fists */
+.proj-punch{
+  font-size:44px;
+  animation:punchTrav var(--dur,.5s) ease-in forwards;
+  filter:drop-shadow(0 0 14px #FF5252);
+}
+@keyframes punchTrav{0%{transform:scale(.5) rotate(-15deg)}55%{transform:scale(1.35) rotate(5deg)}100%{transform:scale(1.15) rotate(0)}}
+.proj-jab{
+  font-size:30px;
+  animation:jabTrav var(--dur,.34s) linear forwards;
+  filter:drop-shadow(0 0 8px #FFD600);
+}
+@keyframes jabTrav{0%{transform:scale(.6)}100%{transform:scale(1.1)}}
+.proj-mega{
+  font-size:52px;
+  animation:megaTrav var(--dur,.7s) ease-in forwards;
+  filter:drop-shadow(0 0 18px #FF9100);
+}
+@keyframes megaTrav{0%{transform:scale(.4) rotate(0)}60%{transform:scale(1.5) rotate(360deg)}100%{transform:scale(1.3) rotate(380deg)}}
+
 /* Ranger kick — glowing foot */
 .proj-kick{
   font-size:30px;
@@ -1277,6 +1297,89 @@ body{font-family:'Nunito',sans-serif;color:#fff}
 /* Enemy hurt/dead facial reactions */
 .anim-enemy-hit .ch-eye{animation:none;transform:scaleY(.2)}
 .anim-enemy-hit .ch-m-idle{opacity:0}
+
+/* ═══════════════════════════════
+   COSTUME MOTION — scarf & cape
+═══════════════════════════════ */
+.ch .ch-scarf-tail{transform-origin:left center;animation:scarfWave 2.4s ease-in-out infinite}
+@keyframes scarfWave{0%,100%{transform:rotate(0)}50%{transform:rotate(9deg) translateY(-2px)}}
+.ch .ch-cape{transform-origin:top center;animation:capeWave 3s ease-in-out infinite}
+@keyframes capeWave{0%,100%{transform:skewX(0) scaleY(1)}50%{transform:skewX(-4deg) scaleY(1.04)}}
+
+/* ═══════════════════════════════
+   SIGNATURE ROUTINES — hero acts
+   out a trademark move sequence
+   before unleashing the attack
+═══════════════════════════════ */
+/* NINJA: weaves hand seals left-right-left, dips head, crouches */
+.sig-ninja .ch-arm-l{animation:sigSealL 1.6s ease-in-out forwards}
+.sig-ninja .ch-arm-r{animation:sigSealR 1.6s ease-in-out forwards}
+@keyframes sigSealL{
+  0%{transform:rotate(0)}
+  14%{transform:rotate(-62deg)}
+  28%{transform:rotate(-30deg)}
+  42%{transform:rotate(-70deg)}
+  56%{transform:rotate(-38deg)}
+  70%{transform:rotate(-66deg)}
+  85%,100%{transform:rotate(-58deg)}
+}
+@keyframes sigSealR{
+  0%{transform:rotate(0)}
+  14%{transform:rotate(62deg)}
+  28%{transform:rotate(30deg)}
+  42%{transform:rotate(70deg)}
+  56%{transform:rotate(38deg)}
+  70%{transform:rotate(66deg)}
+  85%,100%{transform:rotate(58deg)}
+}
+.sig-ninja .ch-head{animation:sigNinjaHead 1.6s ease-in-out forwards}
+@keyframes sigNinjaHead{
+  0%{transform:none}
+  20%{transform:translateY(2px) rotate(-3deg)}
+  50%{transform:translateY(1px) rotate(3deg)}
+  82%{transform:translateY(3px) rotate(0)}
+  100%{transform:translateY(2px)}
+}
+.sig-ninja .ch-root{animation:sigNinjaRoot 1.6s ease-in-out forwards}
+@keyframes sigNinjaRoot{
+  0%,68%{transform:none}
+  82%{transform:scaleY(.93) translateY(4px)}
+  100%{transform:scaleY(.96) translateY(2px)}
+}
+.sig-ninja .ch-scarf-tail{animation:scarfWhip .45s ease-in-out infinite}
+@keyframes scarfWhip{0%,100%{transform:rotate(5deg)}50%{transform:rotate(18deg) translateY(-3px)}}
+.sig-ninja .ch-eye{animation:none;transform:scaleY(.75)}
+
+/* CAPTAIN PUNCH: cracks knuckles, then pulls his fist WAY back and trembles */
+.sig-saiyan .ch-arm-l{animation:sigPunchL 1.6s ease-in-out forwards}
+@keyframes sigPunchL{
+  0%{transform:rotate(0)}
+  16%{transform:rotate(-56deg)}
+  26%{transform:rotate(-50deg)}
+  36%{transform:rotate(-56deg)}
+  55%{transform:rotate(14deg)}
+  100%{transform:rotate(18deg)}
+}
+.sig-saiyan .ch-arm-r{animation:sigPunchR 1.6s ease-in-out forwards}
+@keyframes sigPunchR{
+  0%{transform:rotate(0)}
+  16%{transform:rotate(56deg)}
+  26%{transform:rotate(50deg)}
+  36%{transform:rotate(56deg)}
+  58%{transform:rotate(-148deg)}
+  76%{transform:rotate(-166deg)}
+  84%{transform:rotate(-160deg)}
+  92%{transform:rotate(-167deg)}
+  100%{transform:rotate(-164deg)}
+}
+.sig-saiyan .ch-root{animation:sigPunchRoot 1.6s ease-in-out forwards}
+@keyframes sigPunchRoot{
+  0%,42%{transform:none}
+  62%{transform:rotate(-5deg) translateX(-4px)}
+  100%{transform:rotate(-7deg) translateX(-6px)}
+}
+.sig-saiyan .ch-cape{animation:capeStorm .4s ease-in-out infinite}
+@keyframes capeStorm{0%,100%{transform:skewX(-3deg) scaleY(1.02)}50%{transform:skewX(-11deg) scaleY(1.07)}}
 </style>
 </head>
 <body>
@@ -1301,8 +1404,8 @@ body{font-family:'Nunito',sans-serif;color:#fff}
       <div class="h-preview">
         <div id="prev-saiyan" class="prev-slot"></div>
       </div>
-      <div class="h-name">COSMIC HERO</div>
-      <div class="h-sub">Cosmic Wave<br>Star Bolt<br>Galaxy Orb</div>
+      <div class="h-name">CAPTAIN PUNCH</div>
+      <div class="h-sub">Serious Punch<br>Quick Jab<br>Meteor Fist</div>
     </div>
     <div class="hcard" data-h="spider" onclick="pickHero(this)">
       <div class="h-preview">
@@ -1476,35 +1579,93 @@ function chibiFace(o){
 }
 
 function ninjaSVG(){
-  const skin='#FFCC99';
+  const skin='#FFCC99', suit='#2A3B66', suit2='#1D2A4A', accent='#FF7A00';
   return `<svg class="ch" viewBox="0 0 120 150">
   <g class="ch-root">
-    ${chibiBody({suit:'#FF7A00',pants:'#37474F',shoes:'#00897B',hands:skin,belt:'#E65100',
-      chest:'<path d="M47 78 L60 96 L73 78" stroke="#E65100" stroke-width="5" fill="none" stroke-linecap="round"/>'})}
+    <g class="ch-scarf">
+      <path d="M44 74 Q60 82 76 74 L74 84 Q60 90 46 84 Z" fill="#E53935"/>
+      <path class="ch-scarf-tail" d="M74 78 Q94 84 100 102 Q92 106 84 100 Q78 92 72 86 Z" fill="#D32F2F"/>
+    </g>
+    <g class="ch-legs">
+      <rect x="44" y="112" width="13" height="26" rx="6.5" fill="${suit2}"/>
+      <rect x="63" y="112" width="13" height="26" rx="6.5" fill="${suit2}"/>
+      <rect x="43" y="126" width="15" height="7" rx="3.5" fill="#fff" opacity=".85"/>
+      <rect x="62" y="126" width="15" height="7" rx="3.5" fill="#fff" opacity=".85"/>
+      <ellipse cx="50" cy="139" rx="11" ry="6.5" fill="${suit2}"/>
+      <ellipse cx="70" cy="139" rx="11" ry="6.5" fill="${suit2}"/>
+    </g>
+    <g class="ch-arm ch-arm-l">
+      <rect x="24" y="82" width="13" height="32" rx="6.5" fill="${suit}"/>
+      <rect x="24" y="96" width="13" height="9" rx="4" fill="${accent}"/>
+      <circle cx="30.5" cy="114" r="7.5" fill="${skin}"/>
+    </g>
+    <g class="ch-arm ch-arm-r">
+      <rect x="83" y="82" width="13" height="32" rx="6.5" fill="${suit}"/>
+      <rect x="83" y="96" width="13" height="9" rx="4" fill="${accent}"/>
+      <circle cx="89.5" cy="114" r="7.5" fill="${skin}"/>
+    </g>
+    <g class="ch-torso">
+      <rect x="37" y="76" width="46" height="42" rx="15" fill="${suit}"/>
+      <path d="M60 84 L63 91 L70 91 L64.5 95.5 L66.5 102 L60 98 L53.5 102 L55.5 95.5 L50 91 L57 91 Z" fill="#CFD8DC"/>
+      <rect x="37" y="98" width="46" height="9" rx="4.5" fill="${accent}"/>
+    </g>
     <g class="ch-head">
-      <circle cx="60" cy="46" r="30" fill="${skin}"/>
-      <path d="M31 42 Q26 20 40 15 Q44 3 58 8 Q66 0 76 9 Q90 8 88 24 Q96 32 89 42 Q78 26 60 27 Q42 26 31 42 Z" fill="#E53935"/>
-      <path d="M40 15 Q44 3 58 8 L54 18 Z" fill="#C62828" opacity=".6"/>
-      <rect x="30" y="32" width="60" height="12" rx="6" fill="#00897B"/>
-      <rect x="51" y="33" width="18" height="10" rx="3" fill="#B0BEC5"/>
-      <circle cx="60" cy="38" r="2" fill="#78909C"/>
-      ${chibiFace({eyes:'#3949AB',mouth:'#8D4E2A'})}
+      <circle cx="60" cy="46" r="30" fill="${suit}"/>
+      <path d="M33 46 Q33 30 46 27 L74 27 Q87 30 87 46 Q87 56 78 60 L42 60 Q33 56 33 46 Z" fill="${skin}"/>
+      <path d="M30 55 Q40 66 60 66 Q80 66 90 55 L90 62 Q80 76 60 76 Q40 76 30 62 Z" fill="${suit2}"/>
+      <rect x="30" y="28" width="60" height="11" rx="5.5" fill="${accent}"/>
+      <rect x="51" y="29" width="18" height="9" rx="3" fill="#CFD8DC"/>
+      <circle cx="60" cy="33.5" r="1.8" fill="#78909C"/>
+      <g class="ch-eye"><circle cx="47" cy="48" r="7" fill="#fff"/><circle cx="48" cy="49.2" r="3.6" fill="#3949AB"/><circle cx="49.4" cy="47.6" r="1.3" fill="#fff"/></g>
+      <g class="ch-eye"><circle cx="73" cy="48" r="7" fill="#fff"/><circle cx="74" cy="49.2" r="3.6" fill="#3949AB"/><circle cx="75.4" cy="47.6" r="1.3" fill="#fff"/></g>
+      <path class="ch-m ch-m-idle" d="M54 68 Q60 71 66 68" stroke="#141E38" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <path class="ch-m ch-m-hurt" d="M54 70 Q60 65 66 70" stroke="#141E38" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0"/>
+      <path class="ch-m ch-m-joy" d="M52 67 Q60 74 68 67" stroke="#141E38" stroke-width="3.2" fill="none" stroke-linecap="round" opacity="0"/>
     </g>
   </g></svg>`;
 }
 
+/* CAPTAIN PUNCH — bald caped hero, one mighty fist */
 function cosmicSVG(){
-  const skin='#FFDDAA';
+  const skin='#FFDDAA', suit='#FFD23C', suit2='#F2B300', glove='#E53935';
   return `<svg class="ch" viewBox="0 0 120 150">
   <g class="ch-root">
-    ${chibiBody({suit:'#7B1FA2',pants:'#4A148C',shoes:'#311B92',hands:skin,belt:'#CFD8DC',
-      chest:'<path d="M60 82 L63 89 L71 89 L65 94 L67 101 L60 97 L53 101 L55 94 L49 89 L57 89 Z" fill="#FFD600"/>'})}
+    <g class="ch-cape">
+      <path d="M40 76 Q60 70 80 76 L92 128 Q76 122 60 130 Q44 122 28 128 Z" fill="#F5F5F5"/>
+      <path d="M40 76 Q60 70 80 76 L86 100 Q60 92 34 100 Z" fill="#E8E8E8"/>
+    </g>
+    <g class="ch-legs">
+      <rect x="44" y="112" width="13" height="26" rx="6.5" fill="${suit}"/>
+      <rect x="63" y="112" width="13" height="26" rx="6.5" fill="${suit}"/>
+      <ellipse cx="50" cy="139" rx="11" ry="6.5" fill="${glove}"/>
+      <ellipse cx="70" cy="139" rx="11" ry="6.5" fill="${glove}"/>
+    </g>
+    <g class="ch-arm ch-arm-l">
+      <rect x="24" y="82" width="13" height="32" rx="6.5" fill="${suit}"/>
+      <circle cx="30.5" cy="114" r="8" fill="${glove}"/>
+    </g>
+    <g class="ch-arm ch-arm-r">
+      <rect x="83" y="82" width="13" height="32" rx="6.5" fill="${suit}"/>
+      <circle cx="89.5" cy="114" r="8" fill="${glove}"/>
+    </g>
+    <g class="ch-torso">
+      <rect x="37" y="76" width="46" height="42" rx="15" fill="${suit}"/>
+      <path d="M60 78 L60 98" stroke="${suit2}" stroke-width="3"/>
+      <rect x="37" y="98" width="46" height="9" rx="4.5" fill="${glove}"/>
+      <circle cx="60" cy="102.5" r="5" fill="#FFC107"/>
+      <circle cx="44" cy="80" r="4" fill="#F5F5F5"/>
+      <circle cx="76" cy="80" r="4" fill="#F5F5F5"/>
+    </g>
     <g class="ch-head">
       <circle cx="60" cy="46" r="30" fill="${skin}"/>
-      <path d="M32 40 Q28 26 36 15 L42 24 Q42 8 52 4 L55 17 Q58 0 68 4 L67 17 Q76 6 84 14 L78 25 Q90 22 89 38 Q76 24 60 26 Q44 25 32 40 Z" fill="#263238"/>
-      <path d="M38 36 Q44 30 52 32" stroke="#263238" stroke-width="3.4" fill="none" stroke-linecap="round"/>
-      <path d="M68 32 Q76 30 82 36" stroke="#263238" stroke-width="3.4" fill="none" stroke-linecap="round"/>
-      ${chibiFace({eyes:'#5E35B1',mouth:'#8D5524'})}
+      <ellipse cx="48" cy="26" rx="10" ry="5" fill="#fff" opacity=".35"/>
+      <path d="M31 44 Q30 40 32 38 M89 44 Q90 40 88 38" stroke="#E8B980" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <g class="ch-eye"><circle cx="49" cy="48" r="3.2" fill="#1B1B1B"/></g>
+      <g class="ch-eye"><circle cx="71" cy="48" r="3.2" fill="#1B1B1B"/></g>
+      <path d="M44 40 L54 40 M66 40 L76 40" stroke="#E8B980" stroke-width="2.5" stroke-linecap="round"/>
+      <path class="ch-m ch-m-idle" d="M55 64 L65 64" stroke="#8D5524" stroke-width="2.8" stroke-linecap="round"/>
+      <path class="ch-m ch-m-hurt" d="M54 67 Q60 61 66 67" stroke="#8D5524" stroke-width="3" fill="none" stroke-linecap="round" opacity="0"/>
+      <g class="ch-m ch-m-joy" opacity="0"><path d="M52 62 Q60 72 68 62 Z" fill="#7A3B20"/></g>
     </g>
   </g></svg>`;
 }
@@ -1623,11 +1784,11 @@ const HEROES={
     ]
   },
   saiyan:{
-    name:'COSMIC HERO',color:'#FFD600',skyClass:'sky-saiyan',gndClass:'gnd-saiyan',
+    name:'CAPTAIN PUNCH',color:'#FFD600',skyClass:'sky-saiyan',gndClass:'gnd-saiyan',
     jutsus:[
-      {name:'COSMIC WAVE', icon:'⚡',cls:'proj-kame',  impact:'🌟',color:'#00E5FF',dmg:3,dur:.65,pw:48,ph:20,offsetY:-10},
-      {name:'STAR BOLT',   icon:'🔵',cls:'proj-ki',    impact:'💥',color:'#FFD600',dmg:1,dur:.38,pw:20,ph:20,offsetY:-10},
-      {name:'GALAXY ORB',  icon:'🌐',cls:'proj-spirit',impact:'✨',color:'#4fc3f7',dmg:3,dur:.85,pw:44,ph:44,offsetY:-22},
+      {name:'SERIOUS PUNCH',icon:'👊',cls:'proj-punch',impact:'💥',color:'#FF5252',dmg:3,dur:.5, pw:0,ph:0,offsetY:-14},
+      {name:'QUICK JAB',    icon:'🤜',cls:'proj-jab',  impact:'💢',color:'#FFD600',dmg:1,dur:.34,pw:0,ph:0,offsetY:-10},
+      {name:'METEOR FIST',  icon:'🥊',cls:'proj-mega', impact:'🌟',color:'#FF9100',dmg:3,dur:.7, pw:0,ph:0,offsetY:-18},
     ],
     enemies:[
       {name:'GALAXY TYRANT',kind:'alien',color:'#8E44AD',eshot:'#8E44AD'},
@@ -2105,8 +2266,13 @@ function fireJutsu(idx){
   const h=HEROES[G.heroKey];
   const j=h.jutsus[idx];
 
-  // Aura build-up for ALL jutsus
-  addPreAttackAura(j.cls,680);
+  // Signature hero routine before unleashing power
+  // (ninja weaves hand seals; Captain Punch cracks knuckles + winds up his fist)
+  const hasSig=(G.heroKey==='ninja'||G.heroKey==='saiyan');
+  const sigDur=hasSig?1600:680;
+  const hOut=$('heroOuter');
+  if(hasSig){hOut.classList.add('sig-'+G.heroKey);}
+  addPreAttackAura(j.cls,sigDur);
   setHeroAnim('charge');
   showBanner(j.name,j.color);
   spawnFlash(j.color+'22');
@@ -2119,6 +2285,7 @@ function fireJutsu(idx){
   const ey=enemyR.top+enemyR.height*.5;
 
   setTimeout(()=>{
+    if(hasSig)hOut.classList.remove('sig-'+G.heroKey);
     clearPreAttackAura();
     spawnFlash(j.color+'55');
 
@@ -2172,7 +2339,7 @@ function fireJutsu(idx){
         });
       },120);
     }
-  },680);
+  },sigDur);
 }
 
 /* ── PROJECTILES ── */
@@ -2592,6 +2759,9 @@ const JUTSU_AURA_COLORS = {
   'proj-ki':        {color:'#FFD600', glow:'#FF8C00', type:'burst'},
   'proj-spirit':    {color:'#4fc3f7', glow:'#00bcd4', type:'spiral'},
   'proj-web':       {color:'#dddddd', glow:'#aaaaaa', type:'burst'},
+  'proj-punch':     {color:'#FF5252', glow:'#FF8A80', type:'burst'},
+  'proj-jab':       {color:'#FFD600', glow:'#FFE566', type:'burst'},
+  'proj-mega':      {color:'#FF9100', glow:'#FFB74D', type:'spiral'},
   'proj-kick':      {color:'#7B1FA2', glow:'#B266FF', type:'burst'},
   'proj-slam':      {color:'#7B1FA2', glow:'#B266FF', type:'burst'},
 };
@@ -3317,6 +3487,12 @@ const AUD = (function(){
       tone(880,'sine',t+.4,.4,.16); nz(.4,.07,t+.3);
     } else if(cls==='proj-web'){
       sweep(1200,280,'sine',t,.1,.20); nz(.05,.13,t);
+    } else if(cls==='proj-punch'){
+      sweep(90,45,'sawtooth',t,.3,.30); nz(.25,.24,t); tone(70,'sine',t+.04,.3,.22);
+    } else if(cls==='proj-jab'){
+      nz(.06,.18,t); sweep(700,200,'square',t,.09,.12);
+    } else if(cls==='proj-mega'){
+      sweep(60,900,'sawtooth',t,.6,.24); nz(.3,.12,t+.15); tone(150,'sine',t,.5,.18);
     } else if(cls==='proj-kick'){
       sweep(400,70,'sawtooth',t,.16,.22); nz(.12,.16,t+.05);
     } else if(cls==='proj-slam'){
