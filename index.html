@@ -3048,32 +3048,14 @@ function startSelectedLevel(){
   G.heroMaxHp=5;
   G.locked=false; G.phase='idle';
 
-  // Journey transition animation
-  showJourneyTransition(lvData.name, ()=>{
-    applyTheme(); loadEnemy(); applyHeroCanvas();
-    heroAnimState='idle'; enemyAnimState='idle';
-    applyHeroAnimClass('idle');
-    showScreen('s-battle');
-    animRunning=true;
-    AUD.startBGM(lvData.bgm||G.heroKey);
-    setTimeout(beginPhase,700);
-  });
-}
-
-function showJourneyTransition(levelName, cb){
-  const el=document.createElement('div');
-  el.className='journey-transition';
-  el.innerHTML=[
-    '<div class="jt-text">ENTERING...</div>',
-    '<div class="jt-sub">'+levelName.toUpperCase()+'</div>',
-  ].join('');
-  el.style.cssText='position:fixed;inset:0;z-index:300;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;';
-  document.body.appendChild(el);
-  setTimeout(()=>{
-    el.style.transition='opacity .4s';
-    el.style.opacity='0';
-    setTimeout(()=>{ el.remove(); cb(); },400);
-  },800);
+  // Straight into battle — no transition overlay
+  applyTheme(); loadEnemy(); applyHeroCanvas();
+  heroAnimState='idle'; enemyAnimState='idle';
+  applyHeroAnimClass('idle');
+  showScreen('s-battle');
+  animRunning=true;
+  AUD.startBGM(lvData.bgm||G.heroKey);
+  setTimeout(beginPhase,500);
 }
 
 /* ════════════════════════════════════════════
